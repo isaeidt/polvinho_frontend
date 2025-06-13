@@ -6,8 +6,6 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch src/server.js",
-    "start": "node src/server.js",
     "lint": "eslint . --ext .js,mjs,cjs",
     "format": "prettier --write .",
     "lint-staged": "npx lint-staged",
