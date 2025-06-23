@@ -1,30 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polvinho Frontend</title>
-    <link rel="stylesheet" href="./css/login.css">
-</head>
-<body>
-    <div class="container">
-      <p>Faça login</p>
-      <hr>
-      <form>
-        <div class="input_user">
-            <label for="user">Matrícula ou Email</label>
-            <input id="user" type="text" placeholder="usuario@gmail.com">
-        </div>
-        <div class="input_senha">
-            <label for="senha">Senha</label>
-            <input id="senha" type="password" placeholder="................">
-        </div>
-        <p>Esqueceu a senha ou deseja trocar?</p>
-        <div class="button_entrar">
-            <button id="entrar" type="submit">Entrar</button>
-        </div>
-      </form>
-    </div>
-    <script type="module" src="./js/login.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+		<title>Polvinho Frontend</title>
+		<link rel="stylesheet" href="../css/login.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="logo">
+				<img src="../img/icone-projeto.png" alt="Polvinho">
+				<p>Polvinho</p>
+			</div>
+			<div class="background_circle1"></div>
+			<div class="background_circle2"></div>
+			<div class="background_circle3"></div>
+			<div class="background_circle4"></div>
+			<div class="card">
+				<div class="form">
+					<h1>Faça login</h1>
+					<hr>
+					<form>
+						<div class="input_user">
+							<label for="user">Matrícula ou Email</label>
+							<input
+								id="user"
+								type="text"
+								placeholder="   usuario@gmail.com">
+						</div>
+						<div class="input_senha">
+							<label for="senha">Senha</label>
+							<div class="senha_input_container">
+								<input
+									id="senha"
+									type="password"
+									placeholder="   ••••••••••••">
+								<img
+									src="../img/Eye.svg"
+									alt="Mostrar Senha"
+									class="eye_icon">
+							</div>
+						</div>
+						<p id="trocarSenha">Esqueceu a senha ou deseja trocar?</p>
+						<div class="button_entrar">
+							<button id="entrar" type="submit">Entrar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script type="module" src="./js/login.js"></script>
+	</body>
 </html>
