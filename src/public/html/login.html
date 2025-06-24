@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
 		<title>Polvinho Frontend</title>
 		<link rel="stylesheet" href="../css/login.css">
+		 <script src="../js/login.js" type="module" defer ></script>
 	</head>
 	<body>
 		<div class="container">
@@ -26,7 +27,7 @@
 							<input
 								id="user"
 								type="text"
-								placeholder="   usuario@gmail.com">
+								placeholder="usuario@gmail.com">
 						</div>
 						<div class="input_senha">
 							<label for="senha">Senha</label>
@@ -34,12 +35,14 @@
 								<input
 									id="senha"
 									type="password"
-									placeholder="   ••••••••••••">
+									placeholder="••••••••••••">
 								<img
 									src="../img/Eye.svg"
 									alt="Mostrar Senha"
 									class="eye_icon">
 							</div>
+							<div class="erro_user"></div>
+							<div class="erro_senha"></div>
 						</div>
 						<p id="trocarSenha">Esqueceu a senha ou deseja trocar?</p>
 						<div class="button_entrar">

@@ -68,6 +68,7 @@ body{
     background-color: var(--bg-inputs);
     margin-bottom: 2.25rem;
     font-size: 1rem;
+    padding-left: 1rem;
 }
 
 #senha{
@@ -77,6 +78,7 @@ body{
     border-radius: 0.3125rem;
     background-color: var(--bg-inputs);
     padding-right: 2.5rem;
+    padding-left: 1rem;
 }
 
 .input_user{
