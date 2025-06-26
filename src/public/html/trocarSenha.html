@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+		<title>Polvinho Frontend</title>
+		<link rel="stylesheet" href="../css/trocarSenha.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="logo">
+				<img src="../img/iconeBranco.png" alt="Polvinho">
+				<p>Polvinho</p>
+			</div>
+			<div class="background_circle1"></div>
+			<div class="background_circle2"></div>
+			<div class="background_circle3"></div>
+			<div class="background_circle4"></div>
+			<div class="card">
+				<div class="form">
+					<h1>Trocar Senha</h1>
+					<hr>
+					<form>
+						<div class="senha_novaIn">
+							<label for="senha_nova">Nova senha</label>
+							<div class="senha_nova_container">
+								<input
+									id="senha_nova"
+									type="password"
+									placeholder="••••••••••••">
+								<img
+									src="../img/Eye.svg"
+									alt="Mostrar Senha"
+									class="eye_icon">
+							</div>
+                        </div>
+                        <div class="senha_confirmacaoIn">
+							<label for="senha_confirmacao">Confirmar senha</label>
+							<div class="senha_confirmacao_container">
+								<input
+									id="senha_confirmacao"
+									type="password"
+									placeholder="••••••••••••">
+								<img
+									src="../img/Eye.svg"
+									alt="Mostrar Senha"
+									class="eye_icon">
+							</div>
+                        </div>
+						<div class="button_salvar">
+							<button id="salvar" type="submit">Salvar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script type="module" src="./js/login.js"></script>
+	</body>
+</html>
