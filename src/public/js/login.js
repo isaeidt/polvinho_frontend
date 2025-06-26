@@ -41,11 +41,9 @@ function saveForm(patch) {
 }
 
 function exibirErrosNaTela(errors) {
-	if (errors.user === errors.senha) {
-		toggleErro(user, erroUser, errors.user);
-		toggleErro(senha, erroUser, errors.senha);
-	} else {
-		toggleErro(user, erroUser, errors.user);
-		toggleErro(senha, erroSenha, errors.senha);
-	}
+	if (!errors.user) toggleErro(user, erroUser, '');
+	else toggleErro(user, erroUser, errors.user);
+
+	if (!errors.senha) toggleErro(senha, erroSenha, '');
+	else toggleErro(senha, erroSenha, errors.senha);
 }

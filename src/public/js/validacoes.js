@@ -33,7 +33,6 @@ export function toggleErro(inputEl, erroBox, msg) {
 			span.style.color = 'red';
 			erroBox.appendChild(span);
 		}
-		span.textContent = msg || '';
 
 		if (msg) {
 			inputEl.style.border = '2px solid red';
@@ -41,8 +40,8 @@ export function toggleErro(inputEl, erroBox, msg) {
 			span.style.display = 'block';
 		} else {
 			inputEl.style.border = '';
-			span.textContent = '';
 			span.style.display = 'none';
+			span.remove();
 		}
 	}
 }
