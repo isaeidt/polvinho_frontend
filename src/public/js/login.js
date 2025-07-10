@@ -23,9 +23,32 @@ form.addEventListener('submit', event => {
 	exibirErrosNaTela(errors);
 	if (Object.keys(errors).length) return;
 	saveForm(data);
+	login(data.user, data.senha);
 	user.value = '';
 	senha.value = '';
 });
+
+const login = async (user, password) => {
+	try {
+		const loginData = {
+			email: user,
+			password_hash: password,
+		};
+		const response = await fetch('http://localhost:3000/login', {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(loginData),
+			credentials: 'same-origin',
+		});
+		const result = await response.json();
+		console.log(result);
+	} catch (error) {
+		console.log('request failed', error);
+	}
+};
 
 function loadForm() {
 	try {
