@@ -43,7 +43,23 @@ body{
     gap:10px;
 }
 
-#disciplinas{
+#dashboard:hover{
+    color: #9e9c9c;
+}
+
+#subjects:hover{
+    color: #9e9c9c;
+}
+
+#change_password:hover{
+    color: #9e9c9c;
+}
+
+#sign_out:hover{
+    color: #9e9c9c;
+}
+
+#subjects{
     display: flex;
     gap:10px;
 }

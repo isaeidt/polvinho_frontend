@@ -13,7 +13,7 @@ const userSchema = {
 	senha: { required: true, min: 8 },
 };
 
-form.addEventListener('submit', event => {
+form.addEventListener('submit', async event => {
 	event.preventDefault();
 	const data = {
 		user: user.value.trim(),
@@ -24,11 +24,13 @@ form.addEventListener('submit', event => {
 	if (Object.keys(errors).length) return;
 	saveForm(data);
 	login(data.user, data.senha);
-	if (login) {
+	const sucesso = await login(data.user, data.senha);
+	if (sucesso) {
 		window.location.assign(
 			'http://127.0.0.1:5501/src/public/html/dashboard.html',
 		);
 	}
+
 	user.value = '';
 	senha.value = '';
 });
@@ -50,8 +52,16 @@ const login = async (user, password) => {
 		});
 		const result = await response.json();
 		console.log(result);
+
+		if (response.ok && result.user && result.token) {
+			return true;
+		} else {
+			console.log('usuario não cadastrado');
+			return false;
+		}
 	} catch (error) {
 		console.log('request failed', error);
+		return false;
 	}
 };
 
