@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --bg-sidebar:#1E1B4B;
+    --tt-login:#EEF2FF;
+}
+
+
+body{
+    background-color: var(--bg-sidebar) ;
+    font-size: 1rem;
+    font-family: 'Robot', sans-serif;
+    color: var(--tt-login);
+}
+
+.logo{
+    display: flex;
+    margin: 1.625rem;
+}
+
+.logo p{
+    color: #F5F5F5;
+    font-size: 1.375rem;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    font-weight: 600;
+}
+
+.options_user{
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+    padding:0px 34px ;
+    margin-top: 32px;
+}
+
+#dashboard{
+    display: flex;
+    gap:10px;
+}
+
+#disciplinas{
+    display: flex;
+    gap:10px;
+}
+
+#seta{
+    display: flexbox;
+    margin-top: 6px;
+    width: 11px;
+    height: 6px;
+}
+
+.options_login{
+    display: flex;
+    flex-direction: column;
+    bottom: 040px;
+    position: fixed;
+    gap:16px;
+    padding:0px 34px ;
+    margin-top: 32px;
+}
+
+#change_password{
+    display: flex;
+    gap:10px;
+}
+
+#sign_out{
+    display: flex;
+    gap:10px;
+}
+
+
+
+
+

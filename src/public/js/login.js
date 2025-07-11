@@ -24,6 +24,11 @@ form.addEventListener('submit', event => {
 	if (Object.keys(errors).length) return;
 	saveForm(data);
 	login(data.user, data.senha);
+	if (login) {
+		window.location.assign(
+			'http://127.0.0.1:5501/src/public/html/dashboard.html',
+		);
+	}
 	user.value = '';
 	senha.value = '';
 });

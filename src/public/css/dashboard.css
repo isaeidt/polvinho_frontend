@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container {
+    display: flex;
+    min-height: 100vh; 
+}
+
+.content {
+    flex: 1;
+    background-color: #FAFAFA;
+    padding: 2rem;
+    border-radius: 20px;
+    color: #1C1917;
+}
+
+
+#sidebar {
+    width: 20%;        
+    flex-shrink: 0;    
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap:8px;
+    font-size: 22px;
+    margin-bottom: 60px;
+    margin-left: 40px;
+
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-left: 40px;
+
+
+}
+
+.materias{
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+.materias p {
+    width: 1300px;
+    height: 64px;
+    border-radius: 16px;
+    border: 2px solid #E7E5E4;
+    background-color: #F5F5F5;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    padding-left: 32px;
+    font-size: 19px;
+    color: #1C1917;
+    transition: transform 0.3s ease;
+}
+
+.materias p:hover{
+    transform: scale(1.01);
+}
+
