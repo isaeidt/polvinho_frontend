@@ -194,3 +194,8 @@ hr {
     gap: 1.5rem;
     margin-top: 2.5rem;
 }
+
+#icone_voltar{
+    all: unset;
+    width: 1.25rem;
+}

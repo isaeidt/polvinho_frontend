@@ -11,7 +11,7 @@
 
 
 body{
-    background-color: var(--bg-sidebar) ;
+    background-color: var(--bg-sidebar);
     font-size: 1rem;
     font-family: 'Robot', sans-serif;
     color: var(--tt-login);
@@ -33,14 +33,14 @@ body{
 .options_user{
     display: flex;
     flex-direction: column;
-    gap:16px;
-    padding:0px 34px ;
-    margin-top: 32px;
+    gap: 1rem;
+    padding: 0 2.125rem;
+    margin-top: 2rem;
 }
 
 #dashboard{
     display: flex;
-    gap:10px;
+    gap: 0.625rem;
 }
 
 #dashboard:hover{
@@ -61,37 +61,48 @@ body{
 
 #subjects{
     display: flex;
-    gap:10px;
+    gap: 0.625rem;
 }
 
 #seta{
     display: flexbox;
-    margin-top: 6px;
-    width: 11px;
-    height: 6px;
+    margin-top: 0.375rem;
+    width: 0.6875rem;
+    height: 0.375rem;
 }
 
 .options_login{
     display: flex;
     flex-direction: column;
-    bottom: 040px;
+    bottom: 2.5rem;
     position: fixed;
-    gap:16px;
-    padding:0px 34px ;
-    margin-top: 32px;
+    gap: 1rem;
+    padding: 0 2.125rem;
+    margin-top: 2rem;
 }
 
 #change_password{
     display: flex;
-    gap:10px;
+    gap: 0.625rem;
 }
 
 #sign_out{
     display: flex;
-    gap:10px;
+    gap: 0.625rem;
 }
 
+#button_dashboard{
+    all: unset;
+}
 
+#button_subjects{
+    all: unset;
+}
 
+#button_change_password{
+    all: unset;
+}
 
-
+#button_sign_out{
+    all: unset;
+}
