@@ -1,14 +1,14 @@
-const subjects = document.querySelector('.subjects');
+const subjectsContainer = document.querySelector('.subjects');
 
-document.addEventListener('DOMContentLoaded', () => {
+if (subjectsContainer) {
 	const subject = document.createElement('p');
 	subject.className = 'subject';
 	subject.innerText = 'Almoço';
-	subjects.appendChild(subject);
+	subjectsContainer.appendChild(subject);
 
 	subject.addEventListener('click', () => {
-		window.location.assign(
-			'http://127.0.0.1:5501/src/public/html/subject.html',
-		);
+		const link = document.createElement('a');
+		link.href = '/disciplina';
+		window.route({ preventDefault: () => {}, currentTarget: link });
 	});
-});
+}

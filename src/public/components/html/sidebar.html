@@ -1,38 +1,32 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
-		<title>Polvinho Frontend</title>
-		<link rel="stylesheet" href="../css/sidebar.css">
-	</head>
-	<body>
-      <aside class="sidebar">
+<div class="container">
+    <aside class="sidebar">
         <div class="logo">
-				<img src="/src/public/img/iconeBranco.png" alt="Polvinho">
-				<p>Polvinho</p>
-			</div>
+            <img src="/public/img/iconeBranco.png" alt="Polvinho">
+            <p>Polvinho</p>
+        </div>
         <div class="options_user">
             <div id="dashboard">
-                <img src="/src/public/img/House.png" alt="house">
-                <a href="/src/public/html/dashboard.html" id="button_dashboard" >Dashboard</a>
+                <img src="/public/img/House.png" alt="house">
+                <button type="button" id="button_dashboard">Dashboard</button>
             </div>
             <div id="subjects">
-                <img src="/src/public/img/Books.png" alt="books">
+                <img src="/public/img/Books.png" alt="books">
                 <button id="button_subjects" type="button">Disciplinas</button>
-                <img src="/src/public/img/seta.png" alt="seta" id="seta">
+                <img src="/public/img/seta.png" alt="seta" id="seta">
             </div>
         </div>
         <div class="options_login">
             <div id="change_password">
                 <p>|**</p>
-                <a href="/src/public/html/trocarSenha.html" id="button_change_password" >Trocar senha</a>
+                <a href="/trocar-senha" onclick="route(event)" id="button_change_password">Trocar senha</a>
             </div>
             <div id="sign_out">
-                <img src="/src/public/img/SignOut.png" alt="signout">
-                <a href="/src/public/html/login.html" id="button_sign_out" >Encerrar sessão</a>
+                <img src="/public/img/SignOut.png" alt="signout">
+                <a href="/login" id="button_sign_out">Encerrar sessão</a>
             </div>
-            </div>
-      </aside>
-    </body>
-</html>
+        </div>
+    </aside>
+
+    <div class="content" id="page-content-wrapper">
+    </div>
+</div>

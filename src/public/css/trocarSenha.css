@@ -1,201 +1,124 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root{
-    --bg-button:#6366F1;
-    --tt-button:#FAFAFA;
+.trocar-senha-wrapper {
+    background-color: #312E81;
+    font-size: 1rem;
+    min-height: 200vh; 
+    --bg-button: #6366F1;
+    --tt-button: #FAFAFA;
     --tt-placeholder: #A8A29E;
-    --bg-inputs:#F5F5F5;
-    --tt-trocarSenha:#312E81;
+    --bg-inputs: #F5F5F5;
     --tt-login: #1C1917;
     --bg-card: #FAFAFA;
     --bg-bola: #6365f17a;
 }
-
-body{
-    background-color:#312E81 ;
-    font-size: 1rem;
-    font-family: 'Robot', sans-serif;
-}
-
-.card{
+.trocar-senha-wrapper .card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    z-index: 1;
-    position: relative;
-    width: 32.9375rem;
+    position: relative; 
+    width: 33rem;
     height: 35rem;
-    margin-top: 6rem;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 6rem auto;
     border-radius: 1.25rem;
-    border: 0.0625rem solid #E5E5E5;
-    padding: 0rem 1rem;
-    gap: 0.625rem;
+    padding: 2rem 1rem;
     background-color: var(--bg-card);
     color: var(--tt-login);
     box-shadow: 0 0.5rem 2rem 0 rgba(60, 60, 90, 0.18);
 }
-
-.card h1{
-    margin-bottom: 1.125rem;
-    font-weight: 500;
-    font: bolder;
+.trocar-senha-wrapper #icone_voltar {
+    all: unset;
+    cursor: pointer;
+    position: absolute; 
+    top: 2rem;          
+    left: 2rem;         
+    width: 1.5rem;
+    height: 1.5rem;
 }
-
-.logo{
+.trocar-senha-wrapper #icone_voltar img {
+    width: 100%;
+    height: 100%;
+}
+.trocar-senha-wrapper .logo {
     display: flex;
     margin: 1.625rem;
 }
-
-.logo p{
+.trocar-senha-wrapper .logo p {
     color: #F5F5F5;
     font-size: 1.375rem;
     margin-top: 0.5rem;
     margin-left: 0.5rem;
     font-weight: 600;
 }
-
-#senha_nova,
-#senha_confirmacao{
+.trocar-senha-wrapper #senha_nova,
+.trocar-senha-wrapper #senha_confirmacao {
     width: 26rem;
     height: 3rem;
-    border: 0.0625rem solid #E5E5E5;
+    border: 1px solid #E5E5E5;
     border-radius: 0.3125rem;
     background-color: var(--bg-inputs);
-    padding-right: 2.5rem;
-    padding-left: 1rem;
+    padding: 0 2.5rem 0 1rem;
 }
-
-.senha_novaIn, .senha_confirmcaoIn {
+.trocar-senha-wrapper .senha_novaIn,
+.trocar-senha-wrapper .senha_confirmacaoIn {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
 }
-
-.senha_novaIn label,
-.senha_confirmcaoIn label {
-    margin-bottom: 0.75rem;
-}
-
-.form{
+.trocar-senha-wrapper .form {
     display: flex;
     flex-direction: column;
-    margin: 6rem 3.5rem;
+    width: 100%;
+    align-items: center;
+    margin-top: 1rem;
 }
-
-.form h1{
-    text-align: center;
+.trocar-senha-wrapper .form h1 {
     font-weight: 600;
+    margin-bottom: 1rem;
 }
-
-#salvar{
-    width: 25.9375rem;
+.trocar-senha-wrapper hr {
+    width: 12.875rem;
+    margin-bottom: 2rem;
+    border: none;
+    border-top: 1.5px solid #D4D4D4;
+}
+.trocar-senha-wrapper .form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.trocar-senha-wrapper #salvar {
+    width: 26rem;
     height: 3rem;
     border-radius: 0.375rem;
     border: none;
-    padding: 0.1875rem 0.4375rem;
     background-color: var(--bg-button);
     color: var(--tt-button);
     font-size: 1.0625rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
 }
-
-.button_salvar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.senha_nova_container,
-.senha_confirmacao_container {
+.trocar-senha-wrapper .senha_nova_container,
+.trocar-senha-wrapper .senha_confirmacao_container {
     position: relative;
     display: flex;
     align-items: center;
     width: 26rem;
 }
-
-.senha_confirmacao_container {
-    gap: 0.75rem;
-}
-
-.eye_icon {
+.trocar-senha-wrapper .eye_icon {
     position: absolute;
     right: 0.75rem;
     width: 1.25rem;
     height: 1.25rem;
     cursor: pointer;
 }
-
-hr {
-    width: 12.875rem;
-    margin: 0 auto;
-    border: none;
-    border-top: 0.09375rem solid #D4D4D4;
-}
-
-.background_circle,
-.background_circle1 {
+.trocar-senha-wrapper .background_circle,
+.trocar-senha-wrapper .background_circle1,
+.trocar-senha-wrapper .background_circle2,
+.trocar-senha-wrapper .background_circle3,
+.trocar-senha-wrapper .background_circle4 {
     position: absolute;
-    top: -6.25rem;
-    right: -9.375rem;
-    width: 31.25rem;
-    height: 31.25rem;
     background-color: var(--bg-bola);
     border-radius: 50%;
     z-index: 0;
 }
-
-.background_circle2 {
-    position: absolute;
-    bottom: -7.5rem;
-    left: -7.5rem;
-    width: 20rem;
-    height: 20rem;
-    background-color: var(--bg-bola);
-    border-radius: 50%;
-    z-index: 0;
-}
-
-.background_circle3 {
-    position: absolute;
-    top: 60%;
-    right: -5rem;
-    width: 11.25rem;
-    height: 11.25rem;
-    background-color: var(--bg-bola);
-    border-radius: 50%;
-    z-index: 0;
-}
-
-.background_circle4 {
-    position: absolute;
-    top: 10%;
-    left: -3.75rem;
-    width: 7.5rem;
-    height: 7.5rem;
-    background-color: var(--bg-bola);
-    border-radius: 50%;
-    z-index: 0;
-}
-
-.form form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-}
-
-#icone_voltar{
-    all: unset;
-    width: 1.25rem;
-}
+.trocar-senha-wrapper .background_circle1 { top: -6.25rem; right: -9.375rem; width: 31.25rem; height: 31.25rem; }
+.trocar-senha-wrapper .background_circle2 { bottom: -7.5rem; left: -7.5rem; width: 20rem; height: 20rem; }
+.trocar-senha-wrapper .background_circle3 { top: 60%; right: -5rem; width: 11.25rem; height: 11.25rem; }
+.trocar-senha-wrapper .background_circle4 { top: 10%; left: -3.75rem; width: 7.5rem; height: 7.5rem; }

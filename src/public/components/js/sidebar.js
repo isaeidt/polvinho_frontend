@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	const sidebarContainer = document.getElementById('sidebar');
 
 	if (sidebarContainer) {
-		//
 		fetch('../components/html/sidebar.html')
 			.then(response => {
 				if (!response.ok) {
@@ -12,6 +11,23 @@ document.addEventListener('DOMContentLoaded', function () {
 			})
 			.then(html => {
 				sidebarContainer.innerHTML = html;
+
+				const dashboard = document.getElementById('button_dashboard');
+				const sair = document.getElementById('button_sign_out');
+
+				if (sair) {
+					sair.addEventListener('click', event => {
+						event.preventDefault();
+						localStorage.clear();
+						window.location.assign('/login');
+					});
+				}
+
+				if (dashboard) {
+					dashboard.addEventListener('click', () => {
+						window.history.back();
+					});
+				}
 			})
 			.catch(error => {
 				console.error('Erro ao carregar a sidebar:', error);

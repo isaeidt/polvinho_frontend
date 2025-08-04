@@ -1,29 +1,16 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root{
-
-    --bg-button:#6366F1;
-    --tt-button:#FAFAFA;
+.login-page-wrapper {
+    background-color: #F5F5F5;
+    overflow-x: hidden;
+    --bg-button: #6366F1;
+    --tt-button: #FAFAFA;
     --tt-placeholder: #A8A29E;
-    --bg-inputs:#F5F5F5;
-    --tt-trocarSenha:#312E81;
+    --bg-inputs: #F5F5F5;
+    --tt-trocarSenha: #312E81;
     --tt-login: #1C1917;
     --bg-card: #FAFAFA;
     --bg-bola: #6365f17a;
 }
-
-body{
-    background-color:#F5F5F5 ;
-    font-size: 1rem;
-    font-family: 'Robot', sans-serif;
-    overflow-x: hidden;
-}
-
-.card{
+.login-page-wrapper .card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,67 +30,55 @@ body{
     color: var(--tt-login);
     box-shadow: 0 8px 32px 0 rgba(60, 60, 90, 0.18);
 }
-
-.card h1{
+.login-page-wrapper .card h1 {
     margin-bottom: 1.125rem;
     font-weight: 500;
-    font: bolder;
 }
-
-.logo{
+.login-page-wrapper .logo {
     display: flex;
     margin: 1.625rem;
 }
-
-.logo p{
+.login-page-wrapper .logo p {
     font-size: 1.375rem;
     margin-top: 0.8rem;
     font-weight: 600;
+    color: #1C1917;
 }
-
-#user{
+.login-page-wrapper #user,
+.login-page-wrapper #senha {
     width: 26rem;
     height: 3rem;
     border: 1px solid #E5E5E5;
     border-radius: 0.3125rem;
     background-color: var(--bg-inputs);
-    margin-bottom: 2.25rem;
     font-size: 1rem;
     padding-left: 1rem;
 }
-
-#senha{
-    width: 26rem;
-    height: 3rem;
-    border: 1px solid #E5E5E5;
-    border-radius: 0.3125rem;
-    background-color: var(--bg-inputs);
+.login-page-wrapper #user {
+    margin-bottom: 2.25rem;
+}
+.login-page-wrapper #senha {
     padding-right: 2.5rem;
-    padding-left: 1rem;
 }
-
-.input_user{
-    margin-top: 3rem;
-}
-
-.input_user, .input_senha {
+.login-page-wrapper .input_user,
+.login-page-wrapper .input_senha {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
 }
-
-.form{
+.login-page-wrapper .input_user {
+    margin-top: 3rem;
+}
+.login-page-wrapper .form {
     display: flex;
     flex-direction: column;
     margin: 5rem 3.5rem;
 }
-
-.form h1{
+.login-page-wrapper .form h1 {
     text-align: center;
     font-weight: 600;
 }
-
-#trocarSenha{
+.login-page-wrapper #trocarSenha {
     color: var(--tt-trocarSenha);
     text-align: center;
     display: block;
@@ -111,8 +86,7 @@ body{
     margin: 2rem auto;
     font-size: 1rem;
 }
-
-#entrar{
+.login-page-wrapper #entrar {
     width: 16.375rem;
     height: 3rem;
     border-radius: 0.375rem;
@@ -126,87 +100,42 @@ body{
     align-items: center;
     margin: 0 auto;
 }
-
-.button_entrar {
+.login-page-wrapper .button_entrar {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
-
-.senha_input_container {
+.login-page-wrapper .senha_input_container {
     position: relative;
     display: flex;
     align-items: center;
     width: 26rem;
 }
-
-.eye_icon {
+.login-page-wrapper .eye_icon {
     position: absolute;
     right: 0.75rem;
     width: 1.25rem;
     height: 1.25rem;
     cursor: pointer;
 }
-
-hr {
-    width: 12.875rem; 
+.login-page-wrapper hr {
+    width: 12.875rem;
     margin: 0 auto;
     border: none;
     border-top: 1.5px solid #D4D4D4;
 }
-
-.background_circle{
+.login-page-wrapper .background_circle,
+.login-page-wrapper .background_circle1,
+.login-page-wrapper .background_circle2,
+.login-page-wrapper .background_circle3,
+.login-page-wrapper .background_circle4 {
     position: absolute;
-    top: -100px;
-    right: -150px;
-    width: 500px;
-    height: 500px;
     background-color: var(--bg-bola);
     border-radius: 50%;
     z-index: 0;
 }
-
-.background_circle1 {
-    position: absolute;
-    top: -100px;
-    right: -150px;
-    width: 500px;
-    height: 500px;
-    background-color: var(--bg-bola);
-    border-radius: 50%;
-    z-index: 0;
-}
-
-.background_circle2 {
-    position: absolute;
-    bottom: -120px;
-    left: -120px;
-    width: 320px;
-    height: 320px;
-    background-color: var(--bg-bola);
-    border-radius: 50%;
-    z-index: 0;
-}
-
-.background_circle3 {
-    position: absolute;
-    top: 60%;
-    right: -80px;
-    width: 180px;
-    height: 180px;
-    background-color: var(--bg-bola);
-    border-radius: 50%;
-    z-index: 0;
-}
-
-.background_circle4 {
-    position: absolute;
-    top: 10%;
-    left: -60px;
-    width: 120px;
-    height: 120px;
-    background-color: var(--bg-bola);
-    border-radius: 50%;
-    z-index: 0;
-}
+.login-page-wrapper .background_circle1 { top: -100px; right: -150px; width: 500px; height: 500px; }
+.login-page-wrapper .background_circle2 { bottom: -120px; left: -120px; width: 320px; height: 320px; }
+.login-page-wrapper .background_circle3 { top: 60%; right: -80px; width: 180px; height: 180px; }
+.login-page-wrapper .background_circle4 { top: 10%; left: -60px; width: 120px; height: 120px; }

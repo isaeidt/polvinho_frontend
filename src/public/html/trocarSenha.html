@@ -4,14 +4,11 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
 		<title>Polvinho Frontend</title>
-		<link rel="stylesheet" href="../css/trocarSenha.css">
-		<script src="../js/trocarSenha.js" type="module" defer></script>
-
 	</head>
 	<body>
 		<div class="container">
 			<div class="logo">
-				<img src="../img/iconeBranco.png" alt="Polvinho">
+				<img src="/public/img/iconeBranco.png" alt="Polvinho">
 				<p>Polvinho</p>
 			</div>
 			<div class="background_circle1"></div>
@@ -19,10 +16,10 @@
 			<div class="background_circle3"></div>
 			<div class="background_circle4"></div>
 			<div class="card">
+				<button type="button" id="icone_voltar" >
+					<img  src="/public/img/icone voltar.png" alt="iconevoltar">
+				</button>
 				<div class="form">
-					<button type="button" id="icone_voltar" >
-                    	<img  src="../img/icone voltar.png" alt="iconevoltar">
-                	</button>
 					<h1>Trocar Senha</h1>
 					<hr>
 					<form>
@@ -34,7 +31,7 @@
 									type="password"
 									placeholder="••••••••••••">
 								<img
-									src="../img/Eye.svg"
+									src="/public/img/Eye.svg"
 									alt="Mostrar Senha"
 									class="eye_icon">
 							</div>
@@ -47,7 +44,7 @@
 									type="password"
 									placeholder="••••••••••••">
 								<img
-									src="../img/Eye.svg"
+									src="/public/img/Eye.svg"
 									alt="Mostrar Senha"
 									class="eye_icon">
 							</div>
@@ -58,7 +55,7 @@
 					</form>
 				</div>
 			</div>
+			<script src="/public/js/trocarSenha.js" type="module"></script>
 		</div>
-		<script type="module" src="./js/login.js"></script>
 	</body>
 </html>

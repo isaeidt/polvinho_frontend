@@ -5,11 +5,11 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .js,mjs,cjs",
     "format": "prettier --write .",
     "lint-staged": "npx lint-staged",
-    "prepare": "husky"
+    "prepare": "husky",
+    "dev": "live-server --port=5501 --file=src/public/html/index.html"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +25,7 @@
     "globals": "^16.2.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.0",
+    "live-server": "^1.2.2",
     "prettier": "^3.5.3",
     "prettier-plugin-organize-imports": "^4.1.0"
   },

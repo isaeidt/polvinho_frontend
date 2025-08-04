@@ -4,13 +4,11 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
 		<title>Polvinho Frontend</title>
-		<link rel="stylesheet" href="../css/login.css">
-		 <script src="../js/login.js" type="module" defer ></script>
-	</head>
+		</head>
 	<body>
 		<div class="container">
 			<div class="logo">
-				<img src="../img/icone-projeto.png" alt="Polvinho">
+				<img src="/public/img/icone-projeto.png" alt="Polvinho">
 				<p>Polvinho</p>
 			</div>
 			<div class="background_circle1"></div>
@@ -37,7 +35,7 @@
 									type="password"
 									placeholder="••••••••••••">
 								<img
-									src="../img/Eye.svg"
+									src="/public/img/Eye.svg"
 									alt="Mostrar Senha"
 									class="eye_icon">
 							</div>
@@ -45,7 +43,7 @@
 							<div class="erro_senha"></div>
 						</div>
 						<p id="trocarSenha">
-							<a href="../html/recuperarSenha.html">Esqueceu a senha ou deseja trocar?</a>
+						<a href="/recuperar-senha" onclick="route(event)">Esqueceu a senha ou deseja trocar?</a>
 						</p>
 						<div class="button_entrar">
 							<button id="entrar" type="submit">Entrar</button>
@@ -53,7 +51,7 @@
 					</form>
 				</div>
 			</div>
+			<script type="module" src="/public/js/login.js"></script>
 		</div>
-		<script type="module" src="./js/login.js"></script>
 	</body>
 </html>

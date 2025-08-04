@@ -2,37 +2,36 @@
 <html lang="pt-br">
 	<head>
 		<meta charset="UTF-8" >
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
 		<title>Polvinho Frontend</title>
-		<link rel="stylesheet" href="../components/css/sidebar.css">
-		<link rel="stylesheet" href="../css/subject.css">
-		<script src="/src/public/components/js/sidebar.js" type="module" defer></script>
-		<script src="../js/subject.js" type="module" defer></script>
-
+		<link rel="stylesheet" href="/public/components/css/sidebar.css" >
+		<link rel="stylesheet" href="/public/css/subject.css" >
+		<script
+			src="/public/components/js/sidebar.js"
+			type="module"
+			defer
+		></script>
+		<script src="/public/js/subject.js" type="module" defer></script>
 	</head>
 	<body>
-		<div class="container">
-			<div id="sidebar"></div>
+		<button type="button" id="icone_voltar">
+			<img src="/public/img/icone voltar.png" alt="iconevoltar" >
+		</button>
 
-			<div class="content">
-                <button type="button" id="icone_voltar" >
-                    <img  src="../img/icone voltar.png" alt="iconevoltar">
-                </button>
-				<header>
-					<h1>Almoço</h1>
-					<p>Quizzes</p>
-				</header>
+		<header>
+			<h1>Almoço</h1>
+			<p>Quizzes</p>
+		</header>
 
-				<main>
-                    <div class="column_quizzes">
-                        <h2>Nome</h2>
-                        <h2>Data de entrega</h2>
-                        <h2>Tipo</h2>
-                    </div>
-                    <div class="quizzes">
-                    </div>
-				</main>
+		<main>
+			<div class="column_quizzes">
+				<h2>Nome</h2>
+				<h2>Data de entrega</h2>
+				<h2>Tipo</h2>
 			</div>
-		</div>
+			<div class="quizzes"></div>
+		</main>
+
+		<script src="/public/js/subject.js" type="module"></script>
 	</body>
 </html>
