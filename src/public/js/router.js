@@ -106,6 +106,12 @@ const loadPage = async route => {
 			}
 			executeScripts(appContainer);
 		}
+
+		window.dispatchEvent(
+			new CustomEvent('page-rendered', {
+				detail: { path: window.location.pathname },
+			}),
+		);
 	} catch (error) {
 		console.error('Erro ao carregar a página:', error);
 		appContainer.innerHTML = '<h1>Erro 404: Página não encontrada</h1>';

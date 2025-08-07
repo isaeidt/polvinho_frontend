@@ -2,14 +2,18 @@ import { getLoggedInUser } from './auth.js';
 
 async function loadDashboard() {
 	const subjectsContainer = document.querySelector('.subjects');
+	const isDashboardPage = window.location.pathname.startsWith('/dashboard-');
+
+	if (!isDashboardPage || !subjectsContainer) {
+		return;
+	}
+
 	const loggedInUser = getLoggedInUser();
-
-	console.log('Conteúdo de loggedInUser:', loggedInUser);
-
-	if (!subjectsContainer || !loggedInUser) {
-		console.error('Container nn encontrado');
-		let path = '/login';
-		window.history.pushState({}, '', path);
+	if (!loggedInUser) {
+		console.error(
+			'Usuário não logado. Redirecionando para a página de login.',
+		);
+		window.history.pushState({}, '', '/login');
 		window.dispatchEvent(new CustomEvent('route-change'));
 		return;
 	}
@@ -18,7 +22,9 @@ async function loadDashboard() {
 	console.log('🚀 ~ loadDashboard ~ userId:', userId);
 
 	try {
-		const response = await fetch(`http://localhost:3030/api/${userId}`);
+		const response = await fetch(`http://localhost:3030/api/${userId}`, {
+			cache: 'no-store',
+		});
 
 		if (!response.ok) {
 			throw new Error(`Erro na API: ${response.statusText}`);
@@ -36,11 +42,16 @@ async function loadDashboard() {
 				subjectElement.innerText = subjectData.name;
 				subjectElement.dataset.subjectId = subjectData._id;
 
-				// subjectElement.addEventListener('click', () => {
-				// 	const path = `/disciplina/${subjectData._id}`;
-				// 	window.history.pushState({}, '', path);
-				// 	window.dispatchEvent(new CustomEvent('route-change'));
-				// });
+				subjectElement.addEventListener('click', () => {
+					const subject = {
+						id: subjectData._id,
+						name: subjectData.name,
+					};
+					localStorage.setItem('subjectId', JSON.stringify(subject));
+					const path = '/disciplina';
+					window.history.pushState({}, '', path);
+					window.dispatchEvent(new CustomEvent('route-change'));
+				});
 
 				subjectsContainer.appendChild(subjectElement);
 			}
@@ -54,5 +65,7 @@ async function loadDashboard() {
 			'<p>Erro ao carregar suas matérias. Tente novamente mais tarde.</p>';
 	}
 }
+
+window.addEventListener('page-rendered', loadDashboard);
 
 loadDashboard();
