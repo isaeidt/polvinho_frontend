@@ -19,7 +19,7 @@ async function loadDashboard() {
 	}
 
 	const userId = loggedInUser.id;
-	console.log('🚀 ~ loadDashboard ~ userId:', userId);
+	const userRole = loggedInUser.role;
 
 	try {
 		const response = await fetch(`http://localhost:3030/api/${userId}`, {
@@ -31,33 +31,56 @@ async function loadDashboard() {
 		}
 		const freshUserData = await response.json();
 
-		console.log('freshUserData:', freshUserData);
+		if (userRole !== 'Admin') {
+			subjectsContainer.innerHTML = '';
+			if (freshUserData.subjects && freshUserData.subjects.length > 0) {
+				for (const subjectData of freshUserData.subjects) {
+					const subjectElement = document.createElement('p');
+					subjectElement.className = 'subject';
+					subjectElement.innerText = subjectData.name;
+					subjectElement.dataset.subjectId = subjectData._id;
 
-		subjectsContainer.innerHTML = '';
+					subjectElement.addEventListener('click', () => {
+						const subject = {
+							id: subjectData._id,
+							name: subjectData.name,
+						};
+						localStorage.setItem(
+							'subjectId',
+							JSON.stringify(subject),
+						);
+						const path = '/disciplina';
+						window.history.pushState({}, '', path);
+						window.dispatchEvent(new CustomEvent('route-change'));
+					});
 
-		if (freshUserData.subjects && freshUserData.subjects.length > 0) {
-			for (const subjectData of freshUserData.subjects) {
-				const subjectElement = document.createElement('p');
-				subjectElement.className = 'subject';
-				subjectElement.innerText = subjectData.name;
-				subjectElement.dataset.subjectId = subjectData._id;
-
-				subjectElement.addEventListener('click', () => {
-					const subject = {
-						id: subjectData._id,
-						name: subjectData.name,
-					};
-					localStorage.setItem('subjectId', JSON.stringify(subject));
-					const path = '/disciplina';
-					window.history.pushState({}, '', path);
-					window.dispatchEvent(new CustomEvent('route-change'));
-				});
-
-				subjectsContainer.appendChild(subjectElement);
+					subjectsContainer.appendChild(subjectElement);
+				}
+			} else {
+				subjectsContainer.innerHTML =
+					'<p>Você não está matriculado em nenhuma matéria.</p>';
 			}
 		} else {
-			subjectsContainer.innerHTML =
-				'<p>Você não está matriculado em nenhuma matéria.</p>';
+			const alunosCadastrados = document.getElementById('alunos');
+			const professoresCadastrados =
+				document.getElementById('professores');
+			const disciplinasCadastradas =
+				document.getElementById('disciplinas');
+			alunosCadastrados.addEventListener('click', () => {
+				const path = '/alunos-cadastrados';
+				window.history.pushState({}, '', path);
+				window.dispatchEvent(new CustomEvent('route-change'));
+			});
+			professoresCadastrados.addEventListener('click', () => {
+				const path = '/professores-cadastrados';
+				window.history.pushState({}, '', path);
+				window.dispatchEvent(new CustomEvent('route-change'));
+			});
+			disciplinasCadastradas.addEventListener('click', () => {
+				const path = '/disciplinas-cadastradas';
+				window.history.pushState({}, '', path);
+				window.dispatchEvent(new CustomEvent('route-change'));
+			});
 		}
 	} catch (error) {
 		console.error('Falha ao carregar dados do dashboard:', error);

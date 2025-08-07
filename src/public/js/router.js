@@ -33,13 +33,31 @@ const routes = {
 		class: 'trocar-senha-wrapper',
 		allowedRoles: ['Admin', 'Professor', 'Aluno'],
 	},
-}; // rotas onde mostra o nome da rota definido, o caminho no repositório, a class pra poder carregar o css certo e a role que é permetida pra essa rota
+	'/alunos-cadastrados': {
+		file: '/public/html/alunosCadastrados.html',
+		class: 'subject-wrapper',
+		allowedRoles: ['Admin'],
+	},
+	'/professores-cadastrados': {
+		file: '/public/html/professoresCadastrados.html',
+		class: 'subject-wrapper',
+		allowedRoles: ['Admin'],
+	},
+	'/disciplinas-cadastradas': {
+		file: '/public/html/disciplinasCadastradas.html',
+		class: 'subject-wrapper',
+		allowedRoles: ['Admin'],
+	},
+}; // rotas onde mostra o nome da rota definindo, o caminho no repositório, a class pra poder carregar o css certo e a role que é permetida pra essa rota
 
 const privateRoutes = [
 	'/dashboard-admin',
 	'/dashboard-professor',
 	'/dashboard-aluno',
 	'/disciplina',
+	'/alunos-cadastrados',
+	'/professores-cadastrados',
+	'/disciplinas-cadastradas',
 ];
 
 const isAuthenticated = () => {
