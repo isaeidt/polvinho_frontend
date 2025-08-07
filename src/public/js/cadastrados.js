@@ -89,6 +89,15 @@ async function loadCadastrados() {
 	}
 
 	const voltarButton = document.getElementById('icone_voltar');
+	const cadastrarButton = document.getElementById('cadastrar-button');
+
+	if (cadastrarButton) {
+		cadastrarButton.onclick = () => {
+			const path = '/cadastrar';
+			window.history.pushState({}, '', path);
+			window.dispatchEvent(new CustomEvent('route-change'));
+		};
+	}
 
 	if (voltarButton) {
 		voltarButton.onclick = () => {

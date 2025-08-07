@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" >
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+		<title>Polvinho Frontend</title>
+		<link rel="stylesheet" href="/public/components/css/sidebar.css" >
+		<link rel="stylesheet" href="/public/css/subject.css" >
+		<script
+			src="/public/components/js/sidebar.js"
+			type="module"
+			defer
+		></script>
+		<script src="/public/js/cadastrar.js" type="module" defer></script>
+	</head>
+	<body>
+		<button type="button" id="icone_voltar">
+			<img src="/public/img/icone voltar.png" alt="iconevoltar" >
+		</button>
+
+		<header>
+			<h1>Cadastrar</h1>
+		</header>
+
+		<main>
+             <form>
+                <div class="nome">
+                    <label for="nome_input">Nome Completo</label>
+                    <input id="nome_input" type="text" placeholder="Nome Sobrenome" autocomplete="off">
+                </div>
+                <div class="matricula">
+                    <label for="matricula_input">Matrícula</label>
+                    <input id="matricula_input" type="text" placeholder="0000" autocomplete="off">
+                </div>
+                <div class="email">
+                    <label for="email_input">E-mail</label>
+                    <input id="email_input" type="text" placeholder="emial@email.com" autocomplete="off">
+                </div>
+                <div class="disciplinas">
+                    <label for="disciplinas_input">Disciplinas</label>
+                    <select id="disciplinas_input" name="disciplinas" multiple></select> <!--No js fazer com que esse select renderize as options com as materias disponiveis-->
+                </div>
+
+                <button type="submit" id="cadastrar-button">Cadastrar</button>
+             </form>
+		</main>
+
+		<script src="/public/js/cadastrar.js" type="module"></script>
+	</body>
+</html>

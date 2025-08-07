@@ -48,6 +48,11 @@ const routes = {
 		class: 'subject-wrapper',
 		allowedRoles: ['Admin'],
 	},
+	'/cadastrar': {
+		file: '/public/html/cadastrar.html',
+		class: 'subject-wrapper',
+		allowedRoles: ['Admin'],
+	},
 }; // rotas onde mostra o nome da rota definindo, o caminho no repositório, a class pra poder carregar o css certo e a role que é permetida pra essa rota
 
 const privateRoutes = [
@@ -58,6 +63,7 @@ const privateRoutes = [
 	'/alunos-cadastrados',
 	'/professores-cadastrados',
 	'/disciplinas-cadastradas',
+	'/cadastrar',
 ];
 
 const isAuthenticated = () => {
