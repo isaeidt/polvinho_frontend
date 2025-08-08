@@ -107,3 +107,109 @@ subject-wrapper .cadastrados p span {
 .subject-wrapper #cadastrar-button:hover{
     background-color: #797bf1;
 }
+
+
+.subject-wrapper form{
+    display: flex;
+    flex-wrap: wrap;
+    gap:6px;
+}
+
+.subject-wrapper .nome, .matricula, .email{
+    display: flex;
+    flex-direction: column;
+    gap:12px;
+}
+
+.subject-wrapper form input, select{
+    border: 1px solid #cec9c9;
+    background-color: none;
+    width: 514px;
+    height: 48px;
+    border-radius: 8px;
+    font-size: 15px;
+    padding: 0 1rem;
+    margin-bottom: 32px;
+    outline: none;
+}
+
+.subject-wrapper #cadastrar-button-form{
+    width: 171px;
+    height: 56px;
+    border-radius: 8px;
+    font-size: larger;
+    border: none;
+    background-color: #6366F1;
+    color: var(--bg-quizzes);
+    
+}
+
+.subject-wrapper #cadastrar-button-form:hover{
+    background-color: #797bf1;
+}
+
+.subject-wrapper #button-container{
+    padding: 100px;
+    margin-right: 350px;
+    
+}
+
+.custom-select-container {
+	position: relative;
+	width: 100%;
+}
+
+.selected-tags {
+    margin-top: 10px;;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+	align-items: center;
+	width: 514px;
+    height: 48px;
+	border: 1px solid #cec9c9;
+	border-radius: 8px;
+	padding: 8px;
+	cursor: pointer;
+	background-color: white;
+}
+
+.tag-item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	background-color: #e0e7ff;
+	color: #3730a3;
+	padding: 4px 10px;
+	border-radius: 16px;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.tag-item b {
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.options-list {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	background-color: #fff;
+	border: 1px solid #cec9c9;
+	border-radius: 8px;
+	margin-top: 4px;
+	max-height: 200px;
+	overflow-y: auto;
+	z-index: 10;
+}
+
+.option-item {
+	padding: 12px;
+	cursor: pointer;
+}
+
+.option-item:hover {
+	background-color: #f0f0f0;
+}

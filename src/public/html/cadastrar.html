@@ -23,7 +23,7 @@
 		</header>
 
 		<main>
-             <form>
+             <form class="cadastrar-form">
                 <div class="nome">
                     <label for="nome_input">Nome Completo</label>
                     <input id="nome_input" type="text" placeholder="Nome Sobrenome" autocomplete="off">
@@ -34,14 +34,15 @@
                 </div>
                 <div class="email">
                     <label for="email_input">E-mail</label>
-                    <input id="email_input" type="text" placeholder="emial@email.com" autocomplete="off">
+                    <input id="email_input" type="text" placeholder="email@email.com" autocomplete="off">
                 </div>
                 <div class="disciplinas">
                     <label for="disciplinas_input">Disciplinas</label>
                     <select id="disciplinas_input" name="disciplinas" multiple></select> <!--No js fazer com que esse select renderize as options com as materias disponiveis-->
                 </div>
-
-                <button type="submit" id="cadastrar-button">Cadastrar</button>
+                <div id="button-container">
+                    <button type="submit" id="cadastrar-button-form">Cadastrar</button>
+                </div>
              </form>
 		</main>
 

@@ -1,4 +1,5 @@
 const appContainer = document.getElementById('app-container');
+//fazer variaveis pras coisas
 
 const routes = {
 	'/': { file: '/public/html/login.html', class: 'login-page-wrapper' },
@@ -48,7 +49,17 @@ const routes = {
 		class: 'subject-wrapper',
 		allowedRoles: ['Admin'],
 	},
-	'/cadastrar': {
+	'/cadastrar-aluno': {
+		file: '/public/html/cadastrar.html',
+		class: 'subject-wrapper',
+		allowedRoles: ['Admin'],
+	},
+	'/cadastrar-professor': {
+		file: '/public/html/cadastrar.html',
+		class: 'subject-wrapper',
+		allowedRoles: ['Admin'],
+	},
+	'/cadastrar-disciplina': {
 		file: '/public/html/cadastrar.html',
 		class: 'subject-wrapper',
 		allowedRoles: ['Admin'],
@@ -63,7 +74,9 @@ const privateRoutes = [
 	'/alunos-cadastrados',
 	'/professores-cadastrados',
 	'/disciplinas-cadastradas',
-	'/cadastrar',
+	'/cadastrar-aluno',
+	'/cadastrar-professor',
+	'/cadastrar-disciplina',
 ];
 
 const isAuthenticated = () => {
@@ -78,6 +91,7 @@ const isAuthenticated = () => {
 }; // verifica se o usuário tem o token válido para estar naquela rota
 
 const executeScripts = container => {
+	console.log('executou script');
 	const scripts = container.querySelectorAll('script');
 	scripts.forEach(script => {
 		const newScript = document.createElement('script');
@@ -92,6 +106,7 @@ const executeScripts = container => {
 }; //isso aqui executa os scripts das páginas, já que eu estou usando páginas html tem que colocar isso para carregar o html e o script
 
 const loadPage = async route => {
+	console.log('carregou a pagina');
 	try {
 		appContainer.className = '';
 		appContainer.classList.add(route.class);

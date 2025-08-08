@@ -35,3 +35,4 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 	}
 });
+// fazer pra mudar a parte das disciplinas quando for professor ou admin
