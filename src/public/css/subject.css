@@ -115,7 +115,7 @@ subject-wrapper .cadastrados p span {
     gap:6px;
 }
 
-.subject-wrapper .nome, .matricula, .email{
+.subject-wrapper .nome, .matricula, .email {
     display: flex;
     flex-direction: column;
     gap:12px;
