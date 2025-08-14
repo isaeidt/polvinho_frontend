@@ -79,6 +79,24 @@
     
 }
 
+.subject-wrapper .postados li, .arquivados li {
+    margin-bottom: 10px;
+    max-width: 600px;
+    min-height: 4rem;
+    border-radius: 1rem;
+    border: 0.125rem solid #E7E5E4;
+    background-color: var(--bg-subjects);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+    font-size: 1.1875rem;
+    color: #6d6565;
+    padding: 0 1rem;
+    
+    
+}
+
 subject-wrapper .cadastrados p span {
     text-align: left;
 }
@@ -191,7 +209,7 @@ subject-wrapper .cadastrados p span {
 	cursor: pointer;
 }
 
-.options-list {
+ .options-list {
 	position: absolute;
 	top: 100%;
 	left: 0;
@@ -205,11 +223,16 @@ subject-wrapper .cadastrados p span {
 	z-index: 10;
 }
 
-.option-item {
+ .option-item {
 	padding: 12px;
 	cursor: pointer;
 }
 
-.option-item:hover {
+ .option-item:hover {
 	background-color: #f0f0f0;
+}
+
+.subject-wrapper .placeholder{
+    all: unset;
+    color: #857e7e;
 }

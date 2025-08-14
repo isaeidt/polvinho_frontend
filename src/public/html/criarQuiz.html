@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" >
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+		<title>Polvinho Frontend</title>
+		<link rel="stylesheet" href="/public/components/css/sidebar.css" >
+		<link rel="stylesheet" href="/public/css/subject.css" >
+		<script
+			src="/public/components/js/sidebar.js"
+			type="module"
+			defer
+		></script>
+	</head>
+	<body>
+		<button type="button" id="icone_voltar">
+			<img src="/public/img/icone voltar.png" alt="iconevoltar" >
+		</button>
+
+		<header>
+			<h1>Criar Quiz</h1>
+		</header>
+
+		<main>
+             <form class="cadastrar-form">
+                <div class="nome">
+                    <input id="nome_input" type="text" placeholder="Nome do Quiz" autocomplete="off">
+                </div>
+                <div class="disciplinas">
+                    <select id="disciplinas_input" name="disciplinas" multiple>
+                        <option value="" disabled selected class="placeholder">Selecione a disciplina</option>
+                    </select>
+                </div>
+                <div class="tipo">
+                    <select id="tipo_input" name="tipo" >
+                        <option value="simulado" >Simulado</option>
+                        <option value="prova">Prova</option>
+                    </select>
+                </div>
+                <div class="tentativas">
+                    <input id="tentativas_input" type="number" placeholder="Tentativas para realizar o quiz" autocomplete="off">
+                </div>
+                <div class="tempo">
+                    <input id="tempo_input" type="number" placeholder="Tempo máximo do Quiz" autocomplete="off">
+                </div>
+                <div class="dataInicio">
+                    <input id="dataInicio_input" type="text" placeholder="DD/MM/YYYY    -     Data de inicio" onfocus="this.type='date'" onblur="if (!this.value) this.type='text'" autocomplete="off">
+                </div>
+                <div class="dataFim">
+                    <input id="dataFim_input" type="text" placeholder="DD/MM/YYYY    -    Data de entrega" onfocus="this.type='date'" onblur="if (!this.value) this.type='text'" autocomplete="off">
+                </div>
+                <div id="button-container">
+                    <button type="submit" id="cadastrar-button-form">Cadastrar</button>
+                </div>
+             </form>
+		</main>
+
+        <script src="/public/js/criarQuiz.js" type="module"></script>
+    </body>
+</html>

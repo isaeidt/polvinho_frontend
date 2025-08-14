@@ -1,3 +1,5 @@
+import { getLoggedInUser } from './auth.js';
+
 async function loadSubject() {
 	if (window.location.pathname !== '/disciplina') {
 		return;
@@ -13,6 +15,57 @@ async function loadSubject() {
 		};
 	}
 
+	const loggedInUser = getLoggedInUser();
+	if (!loggedInUser) {
+		console.error(
+			'Usuário não logado. Redirecionando para a página de login.',
+		);
+		window.history.pushState({}, '', '/login');
+		window.dispatchEvent(new CustomEvent('route-change'));
+		return;
+	}
+	const userRole = loggedInUser.role;
+
+	if (userRole === 'Professor') {
+		const column = document.querySelector('.column_quizzes');
+		column.innerHTML = `<h2 class ='postados'>Postados</h2><h2 class ='arquivados'>Arquivados</h2>`;
+		const subjectId = JSON.parse(localStorage.getItem('subjectId'));
+		console.log('🚀 ~ loadSubject ~ subjectId:', subjectId);
+
+		const response = await fetch(
+			`http://localhost:3030/api/quizzes/all/quiz`,
+			{
+				cache: 'no-store',
+			},
+		);
+
+		if (!response.ok) {
+			throw new Error(`Erro na API: ${response.statusText}`);
+		}
+		const freshQuizData = await response.json();
+		console.log('🚀 ~ loadSubject ~ freshQuizData:', freshQuizData);
+		const filteredQuizzes = freshQuizData.filter(
+			quizData => quizData.subject._id === subjectId.id,
+		);
+		console.log('🚀 ~ loadSubject ~ filteredQuizzes:', filteredQuizzes);
+		for (const quizData of filteredQuizzes) {
+			const quizList = document.createElement('ul');
+			const quizElement = document.createElement('li');
+			quizElement.className = 'quiz';
+			quizElement.innerText = quizData.title;
+			quizElement.dataset.quizId = quizData._id;
+
+			quizList.appendChild(quizElement);
+			if (freshQuizData.is_published) {
+				const postados = document.querySelector('.postados');
+				postados.appendChild(quizList);
+			} else {
+				const arquivados = document.querySelector('.arquivados');
+				arquivados.appendChild(quizList);
+			}
+		}
+	}
+
 	const subjectData = localStorage.getItem('subjectId');
 	const subject = subjectData ? JSON.parse(subjectData) : null;
 
@@ -20,6 +73,18 @@ async function loadSubject() {
 		titulo.innerHTML = subject.name;
 	} else {
 		titulo.innerHTML = 'Matéria não encontrada';
+	}
+
+	const cadastrarButton = document.getElementById('cadastrar-button');
+	if (cadastrarButton) {
+		cadastrarButton.onclick = () => {
+			const newPath = '/criar-quiz';
+
+			if (newPath) {
+				window.history.pushState({}, '', newPath);
+				window.dispatchEvent(new CustomEvent('route-change'));
+			}
+		};
 	}
 }
 

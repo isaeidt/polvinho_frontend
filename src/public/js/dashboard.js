@@ -30,6 +30,7 @@ async function loadDashboard() {
 			throw new Error(`Erro na API: ${response.statusText}`);
 		}
 		const freshUserData = await response.json();
+		console.log('🚀 ~ loadDashboard ~ freshUserData:', freshUserData);
 
 		if (userRole !== 'Admin') {
 			subjectsContainer.innerHTML = '';
