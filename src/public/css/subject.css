@@ -236,3 +236,18 @@ subject-wrapper .cadastrados p span {
     all: unset;
     color: #857e7e;
 }
+
+.subject-wrapper .container-subjectname{
+    display: none;
+}
+
+.subject-wrapper .container-subjectname.on{
+    display: flex;
+    flex-direction: column;
+    width: 204px;
+    height: 160px;
+    padding: 2px 4px;
+    background-color: #e0e7ff;
+    align-items: center;
+    border-radius: 6px;
+}

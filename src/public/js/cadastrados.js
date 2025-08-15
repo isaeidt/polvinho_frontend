@@ -30,14 +30,34 @@ async function loadCadastrados() {
 			const alunoElement = document.createElement('p');
 			alunoElement.className = 'aluno-item';
 			alunoElement.dataset.id = aluno._id;
+			const containerSubject = document.createElement('div')
+			containerSubject.className ='container-subjectname'
+			for(const subject of aluno.subjects){
+				const subjectElement = document.createElement('p');
+				subjectElement.innerText = `${subject.name}`
+				containerSubject.appendChild(subjectElement)
+			}
 			alunoElement.innerHTML = `
                 <span>${aluno.registration || 'N/A'}</span>
                 <span>${aluno.name || 'Nome não informado'}</span>
-                <span>${aluno.subjects.length}</span>
+                <span class="subjectLen">${aluno.subjects.length}</span>
                 <span>Editar</span>
                 <span class="excluir">Excluir</span>
             `;
+
+			const subjectLen = document.querySelector('.subjectLen')
+			subjectLen.appendChild(containerSubject);
+			
+			
+			subjectLen.addEventListener('mouseover', () =>{
+				containerSubject.classList.add('on')
+			})
+			subjectLen.addEventListener('mouseout', () => {
+                containerSubject.classList.remove('on');
+            });
+
 			container.appendChild(alunoElement);
+
 		}
 	}
 
@@ -67,7 +87,7 @@ async function loadCadastrados() {
 			professorElement.innerHTML = `
                 <span>${professor.registration || 'N/A'}</span>
                 <span>${professor.name || 'Nome não informado'}</span>
-                <span>${professor.subjects.length}</span>
+                <span class="subjectLen">${professor.subjects.length}</span>
                 <span>Editar</span>
                 <span class="excluir">Excluir</span>
             `;
