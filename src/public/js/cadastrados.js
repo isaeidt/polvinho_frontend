@@ -30,34 +30,44 @@ async function loadCadastrados() {
 			const alunoElement = document.createElement('p');
 			alunoElement.className = 'aluno-item';
 			alunoElement.dataset.id = aluno._id;
-			const containerSubject = document.createElement('div')
-			containerSubject.className ='container-subjectname'
-			for(const subject of aluno.subjects){
-				const subjectElement = document.createElement('p');
-				subjectElement.innerText = `${subject.name}`
-				containerSubject.appendChild(subjectElement)
-			}
-			alunoElement.innerHTML = `
-                <span>${aluno.registration || 'N/A'}</span>
-                <span>${aluno.name || 'Nome não informado'}</span>
-                <span class="subjectLen">${aluno.subjects.length}</span>
-                <span>Editar</span>
-                <span class="excluir">Excluir</span>
-            `;
 
-			const subjectLen = document.querySelector('.subjectLen')
-			subjectLen.appendChild(containerSubject);
-			
-			
-			subjectLen.addEventListener('mouseover', () =>{
-				containerSubject.classList.add('on')
-			})
-			subjectLen.addEventListener('mouseout', () => {
-                containerSubject.classList.remove('on');
-            });
+			const containerSubject = document.createElement('div');
+			containerSubject.className = 'container-subjectname';
+
+			for (const subject of aluno.subjects) {
+				const subjectElement = document.createElement('p');
+				subjectElement.innerText = `${subject.name}`;
+				containerSubject.appendChild(subjectElement);
+			}
+
+			const subjectLenSpan = document.createElement('span');
+			subjectLenSpan.className = 'subjectLen';
+			subjectLenSpan.textContent = aluno.subjects.length;
+
+			subjectLenSpan.appendChild(containerSubject);
+
+			subjectLenSpan.addEventListener('mouseover', () => {
+				if (aluno.subjects.length > 0) {
+					containerSubject.classList.add('on');
+				}
+			});
+			subjectLenSpan.addEventListener('mouseout', () => {
+				containerSubject.classList.remove('on');
+			});
+
+			alunoElement.innerHTML = `
+            <span>${aluno.registration || 'N/A'}</span>
+            <span>${aluno.name || 'Nome não informado'}</span>
+            <span>Editar</span>
+            <span class="excluir">Excluir</span>
+        `;
+
+			alunoElement.insertBefore(
+				subjectLenSpan,
+				alunoElement.querySelector('.aluno-item > span:nth-of-type(3)'),
+			);
 
 			container.appendChild(alunoElement);
-
 		}
 	}
 
@@ -84,17 +94,48 @@ async function loadCadastrados() {
 			const professorElement = document.createElement('p');
 			professorElement.className = 'professor-item';
 			professorElement.dataset.id = professor._id;
+
+			const containerSubject = document.createElement('div');
+			containerSubject.className = 'container-subjectname';
+
+			for (const subject of professor.subjects) {
+				const subjectElement = document.createElement('p');
+				subjectElement.innerText = `${subject.name}`;
+				containerSubject.appendChild(subjectElement);
+			}
+
+			const subjectLenSpan = document.createElement('span');
+			subjectLenSpan.className = 'subjectLen';
+			subjectLenSpan.textContent = professor.subjects.length;
+
+			subjectLenSpan.appendChild(containerSubject);
+
+			subjectLenSpan.addEventListener('mouseover', () => {
+				if (professor.subjects.length > 0) {
+					containerSubject.classList.add('on');
+				}
+			});
+			subjectLenSpan.addEventListener('mouseout', () => {
+				containerSubject.classList.remove('on');
+			});
+
 			professorElement.innerHTML = `
                 <span>${professor.registration || 'N/A'}</span>
                 <span>${professor.name || 'Nome não informado'}</span>
-                <span class="subjectLen">${professor.subjects.length}</span>
                 <span>Editar</span>
                 <span class="excluir">Excluir</span>
             `;
+
+			professorElement.insertBefore(
+				subjectLenSpan,
+				professorElement.querySelector(
+					'.professor-item > span:nth-of-type(3)',
+				),
+			);
+
 			container.appendChild(professorElement);
 		}
 	}
-
 	if (path === '/disciplinas-cadastradas') {
 		const response = await fetch(`http://localhost:3030/api/all/subject`, {
 			cache: 'no-store',

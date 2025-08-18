@@ -1,113 +1,111 @@
-document.addEventListener('DOMContentLoaded', function () {
-	const sidebarContainer = document.getElementById('sidebar');
+import { getLoggedInUser } from '../../js/auth.js';
 
-	if (sidebarContainer) {
-		fetch('../components/html/sidebar.html')
-			.then(response => {
-				if (!response.ok) {
-					throw new Error(`HTTP error! status: ${response.status}`);
-				}
-				return response.text();
-			})
-			.then(html => {
-				sidebarContainer.innerHTML = html;
+function setupSidebar() {
+	const dashboardButton = document.getElementById('button_dashboard');
+	const signOutButton = document.getElementById('button_sign_out');
+	const subjectsContainer = document.getElementById('subjects');
+	const subjectsButton = document.getElementById('button_subjects');
 
-				const dashboard = document.getElementById('button_dashboard');
-				const sair = document.getElementById('button_sign_out');
-				const subjects = document.getElementById('button_subjects');
+	if (!subjectsContainer) return;
 
-				if (sair) {
-					sair.addEventListener('click', event => {
-						event.preventDefault();
-						localStorage.clear(); // ver se isso ta funcionando mesmo pq acho que nn ta não
-						window.location.assign('/login'); 
-					});
-				}
+	const loggedInUser = getLoggedInUser();
+	if (!loggedInUser) return;
 
-				if (dashboard) {
-					dashboard.addEventListener('click', () => {
-						const user = JSON.stringify(localStorage.getItem('userLogin'))
-						const userRole = user.role
-						switch (userRole) {
-							case 'Admin':
-								path = '/dashboard-admin';
-								break;
-							case 'Professor':
-								path = '/dashboard-professor';
-								break;
-							case 'Aluno':
-								path = '/dashboard-aluno';
-								break;
-						}
-						window.history.pushState({}, '', path);
-						window.dispatchEvent(new CustomEvent('route-change'));
-					
-						
-					});
-				}
+	const { role: userRole, id: userId } = loggedInUser;
 
-				if(subjects){ // tem que ver e ajustar o css dessa parte pq nn faço a menor ideia de como ficou!
-					//nn está como deve ser pq tem que appen esse código no button pra descer
-					subjects.addEventListener('click', () => { 
-						if (userRole !== 'Admin') {
-							subjectsContainer.innerHTML = '';
-							if (freshUserData.subjects && freshUserData.subjects.length > 0) {
-								for (const subjectData of freshUserData.subjects) {
-									const subjectElement = document.createElement('p');
-									subjectElement.className = 'subject';
-									subjectElement.innerText = subjectData.name;
-									subjectElement.dataset.subjectId = subjectData._id;
-
-									subjectElement.addEventListener('click', () => {
-										const subject = {
-											id: subjectData._id,
-											name: subjectData.name,
-										};
-										localStorage.setItem(
-											'subjectId',
-											JSON.stringify(subject),
-										);
-										const path = '/disciplina';
-										window.history.pushState({}, '', path);
-										window.dispatchEvent(new CustomEvent('route-change'));
-									});
-
-									subjectsContainer.appendChild(subjectElement);
-								}
-							} else {
-								subjectsContainer.innerHTML =
-								'<p>Você não está matriculado em nenhuma matéria.</p>';
-							}	
-						}else{
-							/*
-							const alunosCadastrados = document.getElementById('alunos');
-							const professoresCadastrados =
-								document.getElementById('professores');
-							const disciplinasCadastradas =
-								document.getElementById('disciplinas');
-							alunosCadastrados.addEventListener('click', () => {
-								const path = '/alunos-cadastrados';
-								window.history.pushState({}, '', path);
-								window.dispatchEvent(new CustomEvent('route-change'));
-							});
-							professoresCadastrados.addEventListener('click', () => {
-								const path = '/professores-cadastrados';
-								window.history.pushState({}, '', path);
-								window.dispatchEvent(new CustomEvent('route-change'));
-							});
-							disciplinasCadastradas.addEventListener('click', () => {
-								const path = '/disciplinas-cadastradas';
-								window.history.pushState({}, '', path);
-								window.dispatchEvent(new CustomEvent('route-change'));
-							});		*/// AQUI TEM QUE ARRUMAR PRA FAZER SÓ 	UMA LISTA						
-						}
-					});
-				}
-			})
-			.catch(error => {
-				console.error('Erro ao carregar a sidebar:', error);
-				sidebarContainer.innerHTML = `<p>Erro ao carregar a sidebar. Verifique o caminho no console (F12).</p>`;
-			});
+	if (dashboardButton) {
+		dashboardButton.onclick = e => {
+			e.preventDefault();
+			let path = '/login';
+			if (userRole === 'Admin') path = '/dashboard-admin';
+			if (userRole === 'Professor') path = '/dashboard-professor';
+			if (userRole === 'Aluno') path = '/dashboard-aluno';
+			window.history.pushState({}, '', path);
+			window.dispatchEvent(new CustomEvent('route-change'));
+		};
 	}
-});
-// fazer pra mudar a parte das disciplinas quando for professor ou admin
+
+	if (signOutButton) {
+		signOutButton.onclick = e => {
+			e.preventDefault();
+			localStorage.clear();
+			window.location.assign('/login');
+		};
+	}
+
+	if (subjectsButton) {
+		let subjectsList = document.querySelector('.subjects-list');
+		if (!subjectsList) {
+			subjectsList = document.createElement('div');
+			subjectsList.className = 'subjects-list';
+			subjectsContainer.after(subjectsList);
+		}
+
+		subjectsButton.onclick = async e => {
+			e.preventDefault();
+			const isVisible = subjectsList.style.display === 'block';
+			subjectsList.style.display = isVisible ? 'none' : 'block';
+
+			if (!isVisible && subjectsList.childElementCount === 0) {
+				if (userRole === 'Admin') {
+					const adminLinks = [
+						{ name: 'Alunos', path: '/alunos-cadastrados' },
+						{
+							name: 'Professores',
+							path: '/professores-cadastrados',
+						},
+						{
+							name: 'Disciplinas',
+							path: '/disciplinas-cadastradas',
+						},
+					];
+					adminLinks.forEach(info => {
+						const link = document.createElement('a');
+						link.textContent = info.name;
+						link.href = info.path;
+						link.onclick = ev => {
+							ev.preventDefault();
+							window.history.pushState({}, '', info.path);
+							window.dispatchEvent(
+								new CustomEvent('route-change'),
+							);
+						};
+						subjectsList.appendChild(link);
+					});
+				} else {
+					const response = await fetch(
+						`http://localhost:3030/api/${userId}`,
+					);
+					const userData = await response.json();
+					if (userData.subjects && userData.subjects.length > 0) {
+						userData.subjects.forEach(subject => {
+							const link = document.createElement('a');
+							link.textContent = subject.name;
+							link.href = '/disciplina';
+							link.onclick = ev => {
+								ev.preventDefault();
+								localStorage.setItem(
+									'subjectId',
+									JSON.stringify({
+										id: subject._id,
+										name: subject.name,
+									}),
+								);
+								window.history.pushState({}, '', '/disciplina');
+								window.dispatchEvent(
+									new CustomEvent('route-change'),
+								);
+							};
+							subjectsList.appendChild(link);
+						});
+					} else {
+						subjectsList.innerHTML = '<p>Nenhuma disciplina.</p>';
+					}
+				}
+			}
+		};
+	}
+}
+
+window.addEventListener('page-rendered', setupSidebar);
+setupSidebar();

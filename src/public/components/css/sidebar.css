@@ -68,3 +68,23 @@
     all: unset;
     cursor: pointer;
 }
+
+.subjects-list {
+    display: none;
+    flex-direction: column;
+    margin-left: 3.5rem;
+    gap: 0.8rem;
+    margin-top: 0.8rem;
+    padding-bottom: 1rem;
+}
+
+.subjects-list a, .subjects-list p {
+    color: #EEF2FF;
+    text-decoration: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.subjects-list a:hover {
+    color: #9e9c9c;
+}
