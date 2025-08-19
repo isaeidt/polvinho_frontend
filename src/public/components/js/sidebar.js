@@ -13,6 +13,10 @@ function setupSidebar() {
 
 	const { role: userRole, id: userId } = loggedInUser;
 
+	if (userRole === 'Admin') {
+		subjectsButton.innerHTML = 'Painel';
+	}
+
 	if (dashboardButton) {
 		dashboardButton.onclick = e => {
 			e.preventDefault();
@@ -44,7 +48,7 @@ function setupSidebar() {
 		subjectsButton.onclick = async e => {
 			e.preventDefault();
 			const isVisible = subjectsList.style.display === 'block';
-			subjectsList.style.display = isVisible ? 'none' : 'block';
+			subjectsList.style.display = isVisible ? 'none' : 'flex';
 
 			if (!isVisible && subjectsList.childElementCount === 0) {
 				if (userRole === 'Admin') {

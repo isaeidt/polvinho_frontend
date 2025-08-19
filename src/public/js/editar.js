@@ -1,10 +1,11 @@
-async function loadCadastrar() {
-	const isCadastrarPage = window.location.pathname.startsWith('/cadastrar-');
+async function loadEditar() {
+	const isEditarPage = window.location.pathname.startsWith('/editar-');
 	const path = window.location.pathname;
-	if (!isCadastrarPage) {
+	if (!isEditarPage) {
 		return;
 	}
-
+	const idParaEditar = localStorage.getItem('editId');
+	console.log('🚀 ~ loadEditar ~ idParaEditar:', idParaEditar);
 	const voltarButton = document.getElementById('icone_voltar');
 	if (voltarButton) {
 		voltarButton.onclick = () => {
@@ -12,7 +13,7 @@ async function loadCadastrar() {
 		};
 	}
 
-	if (path !== '/cadastrar-disciplina') {
+	if (path !== '/editar-disciplina') {
 		const originalSelect = document.getElementById('disciplinas_input');
 		if (!originalSelect) return;
 
@@ -78,17 +79,16 @@ async function loadCadastrar() {
 				optionsList.style.display === 'none' ? 'block' : 'none';
 		});
 
-		const formCadastro = document.querySelector('.cadastrar-form');
-		if (formCadastro) {
-			formCadastro.addEventListener('submit', async event => {
+		const formEditar = document.querySelector('.cadastrar-form');
+		if (formEditar) {
+			formEditar.addEventListener('submit', async event => {
 				event.preventDefault();
 
-				const name = formCadastro.querySelector('#nome_input');
+				const name = formEditar.querySelector('#nome_input');
 				const registration =
-					formCadastro.querySelector('#matricula_input');
-				const email = formCadastro.querySelector('#email_input');
-				const disciplinaTags =
-					formCadastro.querySelectorAll('.tag-item');
+					formEditar.querySelector('#matricula_input');
+				const email = formEditar.querySelector('#email_input');
+				const disciplinaTags = formEditar.querySelectorAll('.tag-item');
 				const subjectIds = Array.from(disciplinaTags).map(
 					tag => tag.dataset.id,
 				);
@@ -102,7 +102,7 @@ async function loadCadastrar() {
 					subjects: subjectIds,
 				};
 
-				await cadastrar(
+				await editar(
 					data.email,
 					data.name,
 					data.registration,
@@ -116,7 +116,7 @@ async function loadCadastrar() {
 		form.classList.add('disciplina-form');
 		form.classList.remove('cadastrar-form');
 		const nome = document.querySelector('.nome');
-		nome.innerHTML = `<label for="nome_input">Nome</label>
+		nome.innerHTML = `<label for="nomeDisciplina_input">Nome</label>
                     <input id="nomeDisciplina_input" type="text" placeholder="Nome " autocomplete="off">`;
 		const matricula = document.querySelector('.matricula');
 		matricula.remove();
@@ -179,14 +179,14 @@ async function loadCadastrar() {
 				optionsList.style.display === 'none' ? 'block' : 'none';
 		});
 
-		const formCadastro = document.querySelector('.disciplina-form');
-		if (formCadastro) {
-			formCadastro.addEventListener('submit', async event => {
+		const formEditar = document.querySelector('.disciplina-form');
+		if (formEditar) {
+			formEditar.addEventListener('submit', async event => {
 				event.preventDefault();
 
-				const name = formCadastro.querySelector('#nome_input');
+				const name = formEditar.querySelector('#nome_input');
 				const selectedContainer =
-					formCadastro.querySelector('.selected-tags');
+					formEditar.querySelector('.selected-tags');
 				const professorId = selectedContainer.dataset.selectedId;
 
 				if (!professorId) {
@@ -198,22 +198,21 @@ async function loadCadastrar() {
 					professor: professorId,
 				};
 
-				await cadastrarDisciplina(data.name, data.professor);
+				await editarDisciplina(data.name, data.professor);
 				window.history.back();
 			});
 		}
 	}
-
-	const cadastrarDisciplina = async (name, professor) => {
+	const editarDisciplina = async (name, professor) => {
 		try {
 			const disciplinaData = {
 				name: name,
 				professor: professor,
 			};
 			const response = await fetch(
-				'http://localhost:3030/api/create/subject',
+				`http://localhost:3030/api/update/subject/${idParaEditar}`,
 				{
-					method: 'POST',
+					method: 'PATCH',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify(disciplinaData),
 				},
@@ -226,7 +225,7 @@ async function loadCadastrar() {
 		}
 	};
 
-	const cadastrar = async (email, name, registration, subjects) => {
+	const editar = async (email, name, registration, subjects) => {
 		try {
 			const cadastroData = {
 				email: email,
@@ -234,31 +233,16 @@ async function loadCadastrar() {
 				registration: registration,
 				subjects: subjects,
 			};
-			const path = window.location.pathname;
-			if (path === '/cadastrar-aluno') {
-				const response = await fetch(
-					'http://localhost:3030/api/create/aluno',
-					{
-						method: 'POST',
-						headers: { 'Content-Type': 'application/json' },
-						body: JSON.stringify(cadastroData),
-					},
-				);
-				const result = await response.json();
-				return response.ok ? result : null;
-			}
-			if (path === '/cadastrar-professor') {
-				const response = await fetch(
-					'http://localhost:3030/api/create/professor',
-					{
-						method: 'POST',
-						headers: { 'Content-Type': 'application/json' },
-						body: JSON.stringify(cadastroData),
-					},
-				);
-				const result = await response.json();
-				return response.ok ? result : null;
-			}
+			const response = await fetch(
+				`http://localhost:3030/api/update/${idParaEditar}`,
+				{
+					method: 'PATCH',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(cadastroData),
+				},
+			);
+			const result = await response.json();
+			return response.ok ? result : null;
 		} catch (error) {
 			console.error('Request failed:', error);
 			return null;
@@ -266,5 +250,5 @@ async function loadCadastrar() {
 	};
 }
 
-window.addEventListener('page-rendered', loadCadastrar);
-loadCadastrar();
+window.addEventListener('page-rendered', loadEditar);
+loadEditar();

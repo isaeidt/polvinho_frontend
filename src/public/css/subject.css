@@ -127,10 +127,14 @@ subject-wrapper .cadastrados p span {
 }
 
 
-.subject-wrapper form{
+.subject-wrapper .cadastrar-form{
     display: flex;
     flex-wrap: wrap;
     gap:6px;
+}
+.subject-wrapper .disciplina-form{
+    display: flex;
+    flex-direction: column;
 }
 
 .subject-wrapper .nome, .matricula, .email {
@@ -139,7 +143,7 @@ subject-wrapper .cadastrados p span {
     gap:12px;
 }
 
-.subject-wrapper form input, select{
+.subject-wrapper #nome_input, #email_input, #matricula_input, form input, select{
     border: 1px solid #cec9c9;
     background-color: none;
     width: 514px;
@@ -148,6 +152,16 @@ subject-wrapper .cadastrados p span {
     font-size: 15px;
     padding: 0 1rem;
     margin-bottom: 32px;
+    outline: none;
+}
+.subject-wrapper #nomeDisciplina_input{
+    border: 1px solid #cec9c9;
+    background-color: none;
+    width: 514px;
+    height: 48px;
+    border-radius: 8px;
+    font-size: 15px;
+    padding: 0 1rem;
     outline: none;
 }
 
@@ -170,6 +184,12 @@ subject-wrapper .cadastrados p span {
     padding: 100px;
     margin-right: 350px;
     
+}
+
+.subject-wrapper .disciplina-form #button-container {
+    order: 99;
+    padding: 40px 0 0 0;
+    margin: 0;
 }
 
 .custom-select-container {
@@ -229,7 +249,7 @@ subject-wrapper .cadastrados p span {
 }
 
  .option-item:hover {
-	background-color: #f0f0f0;
+	background-color: var(--bg-subjects);
 }
 
 .subject-wrapper .placeholder{
@@ -237,15 +257,15 @@ subject-wrapper .cadastrados p span {
     color: #857e7e;
 }
 
-.subject-wrapper .container-subjectname{
+.subject-wrapper .container-subjectname {
     display: none;
     position: absolute;
     flex-direction: column;
     width: 204px;
     padding: 2px 4px;
-    background-color: #f4f5f8;
+    background-color: var(--bg-subjects);
     align-items: center;
-    border-radius: 6px;
+    border-radius: 16px;
     z-index: 10;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.08);
 }

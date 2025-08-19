@@ -36,6 +36,7 @@ async function loadCadastrados() {
 
 			for (const subject of aluno.subjects) {
 				const subjectElement = document.createElement('p');
+				subjectElement.className = 'subject-item';
 				subjectElement.innerText = `${subject.name}`;
 				containerSubject.appendChild(subjectElement);
 			}
@@ -58,7 +59,7 @@ async function loadCadastrados() {
 			alunoElement.innerHTML = `
             <span>${aluno.registration || 'N/A'}</span>
             <span>${aluno.name || 'Nome não informado'}</span>
-            <span>Editar</span>
+            <span class="editar">Editar</span>
             <span class="excluir">Excluir</span>
         `;
 
@@ -100,6 +101,7 @@ async function loadCadastrados() {
 
 			for (const subject of professor.subjects) {
 				const subjectElement = document.createElement('p');
+				subjectElement.className = 'subject-item';
 				subjectElement.innerText = `${subject.name}`;
 				containerSubject.appendChild(subjectElement);
 			}
@@ -122,7 +124,7 @@ async function loadCadastrados() {
 			professorElement.innerHTML = `
                 <span>${professor.registration || 'N/A'}</span>
                 <span>${professor.name || 'Nome não informado'}</span>
-                <span>Editar</span>
+                <span class="editar">Editar</span>
                 <span class="excluir">Excluir</span>
             `;
 
@@ -158,7 +160,7 @@ async function loadCadastrados() {
                 <span>${disciplina.name || 'Nome não informado'}</span>
                 <span>${disciplina.professor?.name || 'N/A'}</span>
                 <span>0</span>
-                <span>Editar</span>
+                <span class="editar">Editar</span>
                 <span class="excluir">Excluir</span>
             `;
 			container.appendChild(disciplinaElement);
@@ -199,6 +201,33 @@ async function loadCadastrados() {
 			window.history.back();
 		};
 	}
+
+	const botoesEditar = document.querySelectorAll('.editar');
+	botoesEditar.forEach(botao => {
+		botao.addEventListener('click', event => {
+			const itemParaEditar = event.target.closest('p');
+			const id = itemParaEditar.dataset.id;
+
+			if (id) {
+				localStorage.setItem('editId', id);
+
+				let newPath = '';
+				const path = window.location.pathname;
+				if (path === '/alunos-cadastrados') {
+					newPath = '/editar-aluno';
+				} else if (path === '/professores-cadastrados') {
+					newPath = '/editar-professor';
+				} else if (path === '/disciplinas-cadastradas') {
+					newPath = '/editar-disciplina';
+				}
+
+				if (newPath) {
+					window.history.pushState({}, '', newPath);
+					window.dispatchEvent(new CustomEvent('route-change'));
+				}
+			}
+		});
+	});
 
 	const cadastrarButton = document.getElementById('cadastrar-button');
 	if (cadastrarButton) {
