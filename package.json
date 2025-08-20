@@ -9,7 +9,7 @@
     "format": "prettier --write .",
     "lint-staged": "npx lint-staged",
     "prepare": "husky",
-    "dev": "live-server --port=5501 --file=src/public/html/index.html"
+    "dev": "live-server --port=5501 --file=./index.html"
   },
   "keywords": [],
   "author": "",

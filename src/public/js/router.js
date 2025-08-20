@@ -2,85 +2,88 @@ const appContainer = document.getElementById('app-container');
 //fazer variaveis pras coisas
 
 const routes = {
-	'/': { file: '/public/html/login.html', class: 'login-page-wrapper' },
-	'/login': { file: '/public/html/login.html', class: 'login-page-wrapper' },
+	'/': { file: '/src/public/html/login.html', class: 'login-page-wrapper' },
+	'/login': {
+		file: '/src/public/html/login.html',
+		class: 'login-page-wrapper',
+	},
 	'/recuperar-senha': {
-		file: '/public/html/recuperarSenha.html',
+		file: '/src/public/html/recuperarSenha.html',
 		class: 'recuperar-senha-wrapper',
 	},
 
 	'/dashboard-admin': {
-		file: '/public/html/dashboardAdmin.html',
+		file: '/src/public/html/dashboardAdmin.html',
 		class: 'dashboard-wrapper',
 		allowedRoles: ['Admin'],
 	},
 	'/dashboard-professor': {
-		file: '/public/html/dashboardProfessor.html',
+		file: '/src/public/html/dashboardProfessor.html',
 		class: 'dashboard-wrapper',
 		allowedRoles: ['Professor'],
 	},
 	'/dashboard-aluno': {
-		file: '/public/html/dashboardAluno.html',
+		file: '/src/public/html/dashboardAluno.html',
 		class: 'dashboard-wrapper',
 		allowedRoles: ['Aluno'],
 	},
 	'/disciplina': {
-		file: '/public/html/subject.html',
+		file: '/src/public/html/subject.html',
 		class: 'subject-wrapper',
 		allowedRoles: ['Admin', 'Professor', 'Aluno'],
 	},
 	'/trocar-senha': {
-		file: '/public/html/trocarSenha.html',
+		file: '/src/public/html/trocarSenha.html',
 		class: 'trocar-senha-wrapper',
 		allowedRoles: ['Admin', 'Professor', 'Aluno'],
 	},
 	'/alunos-cadastrados': {
-		file: '/public/html/alunosCadastrados.html',
+		file: '/src/public/html/alunosCadastrados.html',
 		class: 'subject-wrapper',
 		allowedRoles: ['Admin'],
 	},
 	'/professores-cadastrados': {
-		file: '/public/html/professoresCadastrados.html',
+		file: '/src/public/html/professoresCadastrados.html',
 		class: 'subject-wrapper',
 		allowedRoles: ['Admin'],
 	},
 	'/disciplinas-cadastradas': {
-		file: '/public/html/disciplinasCadastradas.html',
+		file: '/src/public/html/disciplinasCadastradas.html',
 		class: 'subject-wrapper',
 		allowedRoles: ['Admin'],
 	},
 	'/cadastrar-aluno': {
-		file: '/public/html/cadastrar.html',
+		file: '/src/public/html/cadastrar.html',
 		class: 'subject-wrapper',
 		allowedRoles: ['Admin'],
 	},
 	'/cadastrar-professor': {
-		file: '/public/html/cadastrar.html',
+		file: '/src/public/html/cadastrar.html',
 		class: 'subject-wrapper',
 		allowedRoles: ['Admin'],
 	},
 	'/cadastrar-disciplina': {
-		file: '/public/html/cadastrar.html',
+		file: '/src/public/html/cadastrar.html',
 		class: 'subject-wrapper',
 		allowedRoles: ['Admin'],
 	},
 	'/criar-quiz': {
-		file: '/public/html/criarQuiz.html',
+		file: '/src/public/html/criarQuiz.html',
 		class: 'subject-wrapper',
 		allowedRoles: ['Professor'],
 	},
 	'/editar-aluno': {
-		file: '/public/html/editar.html',
+		file: '/src/public/html/editar.html',
 		class: 'subject-wrapper',
 		allowedRoles: ['Admin'],
 	},
 	'/editar-professor': {
-		file: '/public/html/editar.html',
+		file: '/src/public/html/editar.html',
 		class: 'subject-wrapper',
 		allowedRoles: ['Admin'],
 	},
 	'/editar-disciplina': {
-		file: '/public/html/editar.html',
+		file: '/src/public/html/editar.html',
 		class: 'subject-wrapper',
 		allowedRoles: ['Admin'],
 	},
@@ -137,7 +140,7 @@ const loadPage = async route => {
 
 		if (privateRoutes.includes(window.location.pathname)) {
 			const layoutResponse = await fetch(
-				'/public/components/html/sidebar.html',
+				'/src/public/components/html/sidebar.html',
 			);
 			const layoutHtml = await layoutResponse.text();
 			appContainer.innerHTML = layoutHtml;
