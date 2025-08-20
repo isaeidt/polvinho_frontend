@@ -47,7 +47,7 @@ function setupSidebar() {
 
 		subjectsButton.onclick = async e => {
 			e.preventDefault();
-			const isVisible = subjectsList.style.display === 'block';
+			const isVisible = subjectsList.style.display === 'flex';
 			subjectsList.style.display = isVisible ? 'none' : 'flex';
 
 			if (!isVisible && subjectsList.childElementCount === 0) {

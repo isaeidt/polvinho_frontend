@@ -56,7 +56,7 @@ async function loadSubject() {
 			quizElement.dataset.quizId = quizData._id;
 
 			quizList.appendChild(quizElement);
-			if (freshQuizData.is_published) {
+			if (quizData.is_published) {
 				const postados = document.querySelector('.postados');
 				postados.appendChild(quizList);
 			} else {

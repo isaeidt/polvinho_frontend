@@ -51,9 +51,10 @@
 .subject-wrapper .column_quizzes {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 90%;
     font-size: 0.7rem;
     color: #6d6565;
+    margin-left: 100px;
 }
 
 .subject-wrapper .cadastrados {
@@ -78,10 +79,15 @@
     padding: 0 1rem;
     
 }
+.subject-wrapper .postados , .arquivados  {
+    font-size: 20px;
+    color:#44403C;
+}
+
 
 .subject-wrapper .postados li, .arquivados li {
     margin-bottom: 10px;
-    max-width: 600px;
+    width: 500px;
     min-height: 4rem;
     border-radius: 1rem;
     border: 0.125rem solid #E7E5E4;
@@ -112,9 +118,9 @@ subject-wrapper .cadastrados p span {
 .subject-wrapper #cadastrar-button{
     position: absolute;
     width: 171px;
-    height: 56px;
+    height: 62px;
     border-radius: 8px;
-    font-size: larger;
+    font-size: 22px;
     top: 48px;
     right: 48px;
     border: none;
@@ -198,7 +204,6 @@ subject-wrapper .cadastrados p span {
 }
 
 .selected-tags {
-    margin-top: 10px;;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 15px;
