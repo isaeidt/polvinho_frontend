@@ -146,6 +146,7 @@ async function loadCadastrados() {
 			throw new Error(`Erro na API: ${response.statusText}`);
 
 		const freshUsersData = await response.json();
+		console.log('🚀 ~ loadCadastrados ~ freshUsersData:', freshUsersData);
 		const totalContainer = document.getElementById('total-cadastrados');
 		totalContainer.innerHTML = `${freshUsersData.length} cadastradas`;
 
@@ -158,7 +159,7 @@ async function loadCadastrados() {
 			disciplinaElement.dataset.id = disciplina._id;
 			disciplinaElement.innerHTML = `
                 <span>${disciplina.name || 'Nome não informado'}</span>
-                <span>${disciplina.professor?.name || 'N/A'}</span>
+                <span>${disciplina.professor ? disciplina.professor.name : 'N/A'}</span>
                 <span>0</span>
                 <span class="editar">Editar</span>
                 <span class="excluir">Excluir</span>
