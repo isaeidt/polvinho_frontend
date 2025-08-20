@@ -33,7 +33,7 @@ async function loadCadastrar() {
 
 		try {
 			const response = await fetch(
-				`http://localhost:3030/api/all/subject`,
+				`https://polvinho-api-lj8e.onrender.com/api/all/subject`,
 			);
 			if (!response.ok) throw new Error('Falha ao buscar dados');
 
@@ -149,7 +149,7 @@ async function loadCadastrar() {
 
 		try {
 			const response = await fetch(
-				`http://localhost:3030/api/all/professor`,
+				`https://polvinho-api-lj8e.onrender.com/api/all/professor`,
 			);
 			if (!response.ok) throw new Error('Falha ao buscar dados');
 
@@ -211,7 +211,7 @@ async function loadCadastrar() {
 				professor: professor,
 			};
 			const response = await fetch(
-				'http://localhost:3030/api/create/subject',
+				'https://polvinho-api-lj8e.onrender.com/api/create/subject',
 				{
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
@@ -237,7 +237,7 @@ async function loadCadastrar() {
 			const path = window.location.pathname;
 			if (path === '/cadastrar-aluno') {
 				const response = await fetch(
-					'http://localhost:3030/api/create/aluno',
+					'https://polvinho-api-lj8e.onrender.com/api/create/aluno',
 					{
 						method: 'POST',
 						headers: { 'Content-Type': 'application/json' },
@@ -249,7 +249,7 @@ async function loadCadastrar() {
 			}
 			if (path === '/cadastrar-professor') {
 				const response = await fetch(
-					'http://localhost:3030/api/create/professor',
+					'https://polvinho-api-lj8e.onrender.com/api/create/professor',
 					{
 						method: 'POST',
 						headers: { 'Content-Type': 'application/json' },

@@ -78,7 +78,7 @@ function setupSidebar() {
 					});
 				} else {
 					const response = await fetch(
-						`http://localhost:3030/api/${userId}`,
+						`https://polvinho-api-lj8e.onrender.com/api/${userId}`,
 					);
 					const userData = await response.json();
 					if (userData.subjects && userData.subjects.length > 0) {

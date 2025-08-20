@@ -29,7 +29,9 @@ async function loadCriar() {
 	originalSelect.parentElement.replaceChild(container, originalSelect);
 
 	try {
-		const response = await fetch(`http://localhost:3030/api/all/subject`);
+		const response = await fetch(
+			`https://polvinho-api-lj8e.onrender.com/api/all/subject`,
+		);
 		if (!response.ok) throw new Error('Falha ao buscar dados');
 
 		const subjects = await response.json();
@@ -116,7 +118,7 @@ async function loadCriar() {
 				subject: subject,
 			};
 			const response = await fetch(
-				'http://localhost:3030/api/quizzes/create/quiz',
+				'https://polvinho-api-lj8e.onrender.com/api/quizzes/create/quiz',
 				{
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },

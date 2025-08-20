@@ -11,9 +11,12 @@ async function loadCadastrados() {
 	}
 
 	if (path === '/alunos-cadastrados') {
-		const response = await fetch(`http://localhost:3030/api/all/aluno`, {
-			cache: 'no-store',
-		});
+		const response = await fetch(
+			`https://polvinho-api-lj8e.onrender.com/api/all/aluno`,
+			{
+				cache: 'no-store',
+			},
+		);
 		if (!response.ok)
 			throw new Error(`Erro na API: ${response.statusText}`);
 
@@ -74,7 +77,7 @@ async function loadCadastrados() {
 
 	if (path === '/professores-cadastrados') {
 		const response = await fetch(
-			`http://localhost:3030/api/all/professor`,
+			`https://polvinho-api-lj8e.onrender.com/api/all/professor`,
 			{ cache: 'no-store' },
 		);
 		if (!response.ok)
@@ -139,9 +142,12 @@ async function loadCadastrados() {
 		}
 	}
 	if (path === '/disciplinas-cadastradas') {
-		const response = await fetch(`http://localhost:3030/api/all/subject`, {
-			cache: 'no-store',
-		});
+		const response = await fetch(
+			`https://polvinho-api-lj8e.onrender.com/api/all/subject`,
+			{
+				cache: 'no-store',
+			},
+		);
 		if (!response.ok)
 			throw new Error(`Erro na API: ${response.statusText}`);
 
@@ -180,7 +186,7 @@ async function loadCadastrados() {
 
 			try {
 				const response = await fetch(
-					`http://localhost:3030/api/delete/${id}`,
+					`https://polvinho-api-lj8e.onrender.com/api/delete/${id}`,
 					{ method: 'DELETE' },
 				);
 				if (response.ok) {

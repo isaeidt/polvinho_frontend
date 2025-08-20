@@ -33,7 +33,7 @@ async function loadSubject() {
 		console.log('🚀 ~ loadSubject ~ subjectId:', subjectId);
 
 		const response = await fetch(
-			`http://localhost:3030/api/quizzes/all/quiz`,
+			`https://polvinho-api-lj8e.onrender.com/api/quizzes/all/quiz`,
 			{
 				cache: 'no-store',
 			},

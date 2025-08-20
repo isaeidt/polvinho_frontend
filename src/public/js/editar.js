@@ -34,7 +34,7 @@ async function loadEditar() {
 
 		try {
 			const response = await fetch(
-				`http://localhost:3030/api/all/subject`,
+				`https://polvinho-api-lj8e.onrender.com/api/all/subject`,
 			);
 			if (!response.ok) throw new Error('Falha ao buscar dados');
 
@@ -149,7 +149,7 @@ async function loadEditar() {
 
 		try {
 			const response = await fetch(
-				`http://localhost:3030/api/all/professor`,
+				`https://polvinho-api-lj8e.onrender.com/api/all/professor`,
 			);
 			if (!response.ok) throw new Error('Falha ao buscar dados');
 
@@ -210,7 +210,7 @@ async function loadEditar() {
 				professor: professor,
 			};
 			const response = await fetch(
-				`http://localhost:3030/api/update/subject/${idParaEditar}`,
+				`https://polvinho-api-lj8e.onrender.com/api/update/subject/${idParaEditar}`,
 				{
 					method: 'PATCH',
 					headers: { 'Content-Type': 'application/json' },
@@ -234,7 +234,7 @@ async function loadEditar() {
 				subjects: subjects,
 			};
 			const response = await fetch(
-				`http://localhost:3030/api/update/${idParaEditar}`,
+				`https://polvinho-api-lj8e.onrender.com/api/update/${idParaEditar}`,
 				{
 					method: 'PATCH',
 					headers: { 'Content-Type': 'application/json' },

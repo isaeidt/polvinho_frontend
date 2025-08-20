@@ -22,9 +22,12 @@ async function loadDashboard() {
 	const userRole = loggedInUser.role;
 
 	try {
-		const response = await fetch(`http://localhost:3030/api/${userId}`, {
-			cache: 'no-store',
-		});
+		const response = await fetch(
+			`https://polvinho-api-lj8e.onrender.com/api/${userId}`,
+			{
+				cache: 'no-store',
+			},
+		);
 
 		if (!response.ok) {
 			throw new Error(`Erro na API: ${response.statusText}`);
