@@ -184,15 +184,11 @@ async function loadEditar() {
 			formEditar.addEventListener('submit', async event => {
 				event.preventDefault();
 
-				const name = formEditar.querySelector('#nome_input');
+				const name = formEditar.querySelector('#nomeDisciplina_input');
 				const selectedContainer =
 					formEditar.querySelector('.selected-tags');
 				const professorId = selectedContainer.dataset.selectedId;
 
-				if (!professorId) {
-					console.error('Nenhum professor selecionado!');
-					return;
-				}
 				const data = {
 					name: name.value.trim(),
 					professor: professorId,
