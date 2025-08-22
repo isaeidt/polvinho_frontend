@@ -22,6 +22,7 @@ async function loadCadastrados() {
 
 		const freshUsersData = await response.json();
 		const alunosAtivos = freshUsersData.filter(user => !user.is_deleted);
+		console.log('🚀 ~ loadCadastrados ~ alunosAtivos:', alunosAtivos);
 
 		const totalContainer = document.getElementById('total-cadastrados');
 		totalContainer.innerHTML = `${alunosAtivos.length} cadastrados`;
@@ -37,21 +38,27 @@ async function loadCadastrados() {
 			const containerSubject = document.createElement('div');
 			containerSubject.className = 'container-subjectname';
 
-			for (const subject of aluno.subjects) {
-				const subjectElement = document.createElement('p');
-				subjectElement.className = 'subject-item';
-				subjectElement.innerText = `${subject.name}`;
-				containerSubject.appendChild(subjectElement);
+			if (Array.isArray(aluno.subjects)) {
+				for (const subject of aluno.subjects) {
+					const subjectElement = document.createElement('p');
+					subjectElement.className = 'subject-item';
+					subjectElement.innerText = `${subject.name}`;
+					containerSubject.appendChild(subjectElement);
+				}
 			}
 
 			const subjectLenSpan = document.createElement('span');
 			subjectLenSpan.className = 'subjectLen';
-			subjectLenSpan.textContent = aluno.subjects.length;
-
+			subjectLenSpan.textContent = Array.isArray(aluno.subjects)
+				? aluno.subjects.length
+				: 0;
 			subjectLenSpan.appendChild(containerSubject);
 
 			subjectLenSpan.addEventListener('mouseover', () => {
-				if (aluno.subjects.length > 0) {
+				if (
+					Array.isArray(aluno.subjects) &&
+					aluno.subjects.length > 0
+				) {
 					containerSubject.classList.add('on');
 				}
 			});
@@ -160,6 +167,7 @@ async function loadCadastrados() {
 		container.innerHTML = '';
 
 		for (const disciplina of freshUsersData) {
+			console.log('🚀 ~ loadCadastrados ~ disciplina:', disciplina);
 			const disciplinaElement = document.createElement('p');
 			disciplinaElement.className = 'disciplina-item';
 			disciplinaElement.dataset.id = disciplina._id;
