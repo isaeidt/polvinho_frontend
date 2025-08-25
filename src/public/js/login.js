@@ -1,7 +1,6 @@
 import { toggleErro, validarFormulario } from '../js/validacoes.js';
-
+import { BACK_URL } from './config.js';
 const formLogin = document.querySelector('.login-page-wrapper form');
-const BACK_URL = process.env.BACK_URL;
 
 if (formLogin) {
 	formLogin.addEventListener('submit', async event => {

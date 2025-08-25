@@ -1,10 +1,9 @@
 import { getLoggedInUser } from './auth.js';
-
+import { BACK_URL } from './config.js';
 async function loadSubject() {
 	if (window.location.pathname !== '/disciplina') {
 		return;
 	}
-	const BACK_URL = process.env.BACK_URL;
 	const voltarButton = document.getElementById('icone_voltar');
 	const titulo = document.querySelector('h1');
 

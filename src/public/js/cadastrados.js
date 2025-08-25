@@ -1,6 +1,7 @@
+import { BACK_URL } from './config.js';
 async function loadCadastrados() {
 	const path = window.location.pathname;
-	const BACK_URL = process.env.BACK_URL;
+
 	const paginasPermitidas = [
 		'/alunos-cadastrados',
 		'/professores-cadastrados',

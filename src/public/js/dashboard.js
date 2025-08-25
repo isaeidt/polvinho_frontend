@@ -1,5 +1,5 @@
 import { getLoggedInUser } from './auth.js';
-
+import { BACK_URL } from './config.js';
 async function loadDashboard() {
 	const subjectsContainer = document.querySelector('.subjects');
 	const isDashboardPage = window.location.pathname.startsWith('/dashboard-');
@@ -7,7 +7,6 @@ async function loadDashboard() {
 	if (!isDashboardPage || !subjectsContainer) {
 		return;
 	}
-	const BACK_URL = process.env.BACK_URL;
 	const loggedInUser = getLoggedInUser();
 	if (!loggedInUser) {
 		console.error(

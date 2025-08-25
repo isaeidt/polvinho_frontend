@@ -1,3 +1,4 @@
+import { BACK_URL } from './config.js';
 async function loadCriar() {
 	if (window.location.pathname !== '/criar-quiz') {
 		return;
@@ -8,7 +9,6 @@ async function loadCriar() {
 			window.history.back();
 		};
 	}
-	const BACK_URL = process.env.BACK_URL;
 	const originalSelect = document.getElementById('disciplinas_input');
 
 	if (!originalSelect) return;

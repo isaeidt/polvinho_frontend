@@ -1,10 +1,10 @@
+import { BACK_URL } from './config.js';
 async function loadCadastrar() {
 	const isCadastrarPage = window.location.pathname.startsWith('/cadastrar-');
 	const path = window.location.pathname;
 	if (!isCadastrarPage) {
 		return;
 	}
-	const BACK_URL = process.env.BACK_URL;
 	const voltarButton = document.getElementById('icone_voltar');
 	if (voltarButton) {
 		voltarButton.onclick = () => {

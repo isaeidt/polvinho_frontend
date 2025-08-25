@@ -1,3 +1,4 @@
+import { BACK_URL } from './config.js';
 async function loadEditar() {
 	const isEditarPage = window.location.pathname.startsWith('/editar-');
 	const path = window.location.pathname;
@@ -12,7 +13,6 @@ async function loadEditar() {
 			window.history.back();
 		};
 	}
-	const BACK_URL = process.env.BACK_URL;
 	if (path !== '/editar-disciplina') {
 		const originalSelect = document.getElementById('disciplinas_input');
 		if (!originalSelect) return;
@@ -136,7 +136,6 @@ async function loadEditar() {
 		const tagsContainer = document.createElement('div');
 		tagsContainer.className = 'selected-tags';
 		tagsContainer.textContent = 'Selecione...';
-		const BACK_URL = process.env.BACK_URL;
 		const optionsList = document.createElement('div');
 		optionsList.className = 'options-list';
 		optionsList.style.display = 'none';
