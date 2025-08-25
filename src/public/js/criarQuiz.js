@@ -1,4 +1,3 @@
-import { BACK_URL } from './config.js';
 async function loadCriar() {
 	if (window.location.pathname !== '/criar-quiz') {
 		return;
@@ -9,6 +8,7 @@ async function loadCriar() {
 			window.history.back();
 		};
 	}
+
 	const originalSelect = document.getElementById('disciplinas_input');
 
 	if (!originalSelect) return;
@@ -29,7 +29,9 @@ async function loadCriar() {
 	originalSelect.parentElement.replaceChild(container, originalSelect);
 
 	try {
-		const response = await fetch(`${BACK_URL}/api/all/subject`);
+		const response = await fetch(
+			`https://polvinho-api-lj8e.onrender.com/api/all/subject`,
+		);
 		if (!response.ok) throw new Error('Falha ao buscar dados');
 
 		const subjects = await response.json();
@@ -116,7 +118,7 @@ async function loadCriar() {
 				subject: subject,
 			};
 			const response = await fetch(
-				`${BACK_URL}/api/quizzes/create/quiz`,
+				'https://polvinho-api-lj8e.onrender.com/api/quizzes/create/quiz',
 				{
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },

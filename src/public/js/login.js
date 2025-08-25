@@ -1,5 +1,5 @@
 import { toggleErro, validarFormulario } from '../js/validacoes.js';
-import { BACK_URL } from './config.js';
+
 const formLogin = document.querySelector('.login-page-wrapper form');
 
 if (formLogin) {
@@ -57,11 +57,14 @@ if (formLogin) {
 const login = async (email, password) => {
 	try {
 		const loginData = { email: email, password_hash: password };
-		const response = await fetch(`${BACK_URL}/login`, {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(loginData),
-		});
+		const response = await fetch(
+			'https://polvinho-api-lj8e.onrender.com/login',
+			{
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(loginData),
+			},
+		);
 		const result = await response.json();
 		return response.ok ? result : null;
 	} catch (error) {

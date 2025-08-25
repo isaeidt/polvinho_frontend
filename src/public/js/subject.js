@@ -1,9 +1,10 @@
 import { getLoggedInUser } from './auth.js';
-import { BACK_URL } from './config.js';
+
 async function loadSubject() {
 	if (window.location.pathname !== '/disciplina') {
 		return;
 	}
+
 	const voltarButton = document.getElementById('icone_voltar');
 	const titulo = document.querySelector('h1');
 
@@ -31,9 +32,12 @@ async function loadSubject() {
 		const subjectId = JSON.parse(localStorage.getItem('subjectId'));
 		console.log('🚀 ~ loadSubject ~ subjectId:', subjectId);
 
-		const response = await fetch(`${BACK_URL}/api/quizzes/all/quiz`, {
-			cache: 'no-store',
-		});
+		const response = await fetch(
+			`https://polvinho-api-lj8e.onrender.com/api/quizzes/all/quiz`,
+			{
+				cache: 'no-store',
+			},
+		);
 
 		if (!response.ok) {
 			throw new Error(`Erro na API: ${response.statusText}`);

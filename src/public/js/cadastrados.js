@@ -1,4 +1,3 @@
-import { BACK_URL } from './config.js';
 async function loadCadastrados() {
 	const path = window.location.pathname;
 
@@ -12,9 +11,12 @@ async function loadCadastrados() {
 	}
 
 	if (path === '/alunos-cadastrados') {
-		const response = await fetch(`${BACK_URL}/api/all/aluno`, {
-			cache: 'no-store',
-		});
+		const response = await fetch(
+			`https://polvinho-api-lj8e.onrender.com/api/all/aluno`,
+			{
+				cache: 'no-store',
+			},
+		);
 		if (!response.ok)
 			throw new Error(`Erro na API: ${response.statusText}`);
 
@@ -81,9 +83,10 @@ async function loadCadastrados() {
 	}
 
 	if (path === '/professores-cadastrados') {
-		const response = await fetch(`${BACK_URL}/api/all/professor`, {
-			cache: 'no-store',
-		});
+		const response = await fetch(
+			`https://polvinho-api-lj8e.onrender.com/api/all/professor`,
+			{ cache: 'no-store' },
+		);
 		if (!response.ok)
 			throw new Error(`Erro na API: ${response.statusText}`);
 
@@ -146,9 +149,12 @@ async function loadCadastrados() {
 		}
 	}
 	if (path === '/disciplinas-cadastradas') {
-		const response = await fetch(`${BACK_URL}/api/all/subject`, {
-			cache: 'no-store',
-		});
+		const response = await fetch(
+			`https://polvinho-api-lj8e.onrender.com/api/all/subject`,
+			{
+				cache: 'no-store',
+			},
+		);
 		if (!response.ok)
 			throw new Error(`Erro na API: ${response.statusText}`);
 
@@ -187,9 +193,10 @@ async function loadCadastrados() {
 			}
 
 			try {
-				const response = await fetch(`${BACK_URL}/api/delete/${id}`, {
-					method: 'DELETE',
-				});
+				const response = await fetch(
+					`https://polvinho-api-lj8e.onrender.com/api/delete/${id}`,
+					{ method: 'DELETE' },
+				);
 				if (response.ok) {
 					itemParaRemover.remove();
 				} else {
