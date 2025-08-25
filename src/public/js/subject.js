@@ -67,6 +67,38 @@ async function loadSubject() {
 	} else {
 		const button = document.querySelector('#cadastrar-button');
 		button.remove();
+		const subjectId = JSON.parse(localStorage.getItem('subjectId'));
+		console.log('🚀 ~ loadSubject ~ subjectId:', subjectId);
+
+		const response = await fetch(
+			`https://polvinho-api-lj8e.onrender.com/api/quizzes/all/quiz`,
+			{
+				cache: 'no-store',
+			},
+		);
+
+		if (!response.ok) {
+			throw new Error(`Erro na API: ${response.statusText}`);
+		}
+		const freshQuizData = await response.json();
+		console.log('🚀 ~ loadSubject ~ freshQuizData:', freshQuizData);
+		const filteredQuizzes = freshQuizData.filter(
+			quizData => quizData.subject._id === subjectId.id,
+		);
+		console.log('🚀 ~ loadSubject ~ filteredQuizzes:', filteredQuizzes);
+		for (const quizData of filteredQuizzes) {
+			const quizList = document.createElement('ul');
+			const quizElement = document.createElement('li');
+			quizElement.className = 'quiz';
+			quizElement.innerText = quizData.title;
+			quizElement.dataset.quizId = quizData._id;
+
+			quizList.appendChild(quizElement);
+			if (quizData.is_published) {
+				const quizzes = document.querySelector('.quizzes');
+				quizzes.appendChild(quizList);
+			}
+		}
 	}
 
 	const subjectData = localStorage.getItem('subjectId');
