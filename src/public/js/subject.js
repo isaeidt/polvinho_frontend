@@ -87,16 +87,21 @@ async function loadSubject() {
 		);
 		console.log('🚀 ~ loadSubject ~ filteredQuizzes:', filteredQuizzes);
 		for (const quizData of filteredQuizzes) {
-			const quizList = document.createElement('ul');
-			const quizElement = document.createElement('li');
+			const quizElement = document.createElement('p');
 			quizElement.className = 'quiz';
-			quizElement.innerText = quizData.title;
+			const data = new Date(quizData.release_date);
+			const dataFormatada = data.toLocaleDateString('pt-BR', {
+				timeZone: 'UTC',
+			});
+			quizElement.innerHTML = `<span>${quizData.title}</span>
+            <span>${dataFormatada}</span>
+			<span>Simulado</span>`;
+
 			quizElement.dataset.quizId = quizData._id;
 
-			quizList.appendChild(quizElement);
 			if (quizData.is_published) {
 				const quizzes = document.querySelector('.quizzes');
-				quizzes.appendChild(quizList);
+				quizzes.appendChild(quizElement);
 			}
 		}
 	}

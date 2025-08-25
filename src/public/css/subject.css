@@ -64,7 +64,7 @@
     gap: 0.5rem;
 }
 
-.subject-wrapper .cadastrados p {
+.subject-wrapper .cadastrados p, .quiz {
     width: 102%;
     min-height: 4rem;
     border-radius: 1rem;
@@ -114,6 +114,13 @@ subject-wrapper .cadastrados p span {
 .subject-wrapper .cadastrados p span:nth-child(5) { flex: 0 0 5%; text-align: right; color: #4338CA; }
 .subject-wrapper .cadastrados p span:nth-child(5):hover { color: #756dcf;}
 
+subject-wrapper .quiz p span {
+    text-align: left;
+}
+
+.subject-wrapper .quiz  span:nth-child(1) { flex: 1 1 auto; }
+.subject-wrapper .quiz  span:nth-child(2) { flex: 0 0 45%;  }
+.subject-wrapper .quiz  span:nth-child(3) { flex: 0 0 8%; color: #efeff5; background-color: #778ae7; border-radius: 16px; padding: 0 0px 0 20px;}
 
 .subject-wrapper #cadastrar-button{
     position: absolute;
