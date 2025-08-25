@@ -64,6 +64,9 @@ async function loadSubject() {
 				arquivados.appendChild(quizList);
 			}
 		}
+	} else {
+		const button = document.querySelector('#cadastrar-button');
+		button.remove();
 	}
 
 	const subjectData = localStorage.getItem('subjectId');
