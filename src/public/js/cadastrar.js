@@ -4,7 +4,7 @@ async function loadCadastrar() {
 	if (!isCadastrarPage) {
 		return;
 	}
-
+	const BACK_URL = process.env.BACK_URL;
 	const voltarButton = document.getElementById('icone_voltar');
 	if (voltarButton) {
 		voltarButton.onclick = () => {
@@ -32,9 +32,7 @@ async function loadCadastrar() {
 		originalSelect.parentElement.replaceChild(container, originalSelect);
 
 		try {
-			const response = await fetch(
-				`https://polvinho-api-lj8e.onrender.com/api/all/subject`,
-			);
+			const response = await fetch(`${BACK_URL}/api/all/subject`);
 			if (!response.ok) throw new Error('Falha ao buscar dados');
 
 			const subjects = await response.json();
@@ -148,9 +146,7 @@ async function loadCadastrar() {
 		originalSelect.parentElement.replaceChild(container, originalSelect);
 
 		try {
-			const response = await fetch(
-				`https://polvinho-api-lj8e.onrender.com/api/all/professor`,
-			);
+			const response = await fetch(`${BACK_URL}/api/all/professor`);
 			if (!response.ok) throw new Error('Falha ao buscar dados');
 
 			const subjects = await response.json();
@@ -210,14 +206,11 @@ async function loadCadastrar() {
 				name: name,
 				professor: professor,
 			};
-			const response = await fetch(
-				'https://polvinho-api-lj8e.onrender.com/api/create/subject',
-				{
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify(disciplinaData),
-				},
-			);
+			const response = await fetch(`${BACK_URL}/api/create/subject`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(disciplinaData),
+			});
 			const result = await response.json();
 			return response.ok ? result : null;
 		} catch (error) {
@@ -236,20 +229,17 @@ async function loadCadastrar() {
 			};
 			const path = window.location.pathname;
 			if (path === '/cadastrar-aluno') {
-				const response = await fetch(
-					'https://polvinho-api-lj8e.onrender.com/api/create/aluno',
-					{
-						method: 'POST',
-						headers: { 'Content-Type': 'application/json' },
-						body: JSON.stringify(cadastroData),
-					},
-				);
+				const response = await fetch(`${BACK_URL}/api/create/aluno`, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(cadastroData),
+				});
 				const result = await response.json();
 				return response.ok ? result : null;
 			}
 			if (path === '/cadastrar-professor') {
 				const response = await fetch(
-					'https://polvinho-api-lj8e.onrender.com/api/create/professor',
+					`${BACK_URL}/api/create/professor`,
 					{
 						method: 'POST',
 						headers: { 'Content-Type': 'application/json' },

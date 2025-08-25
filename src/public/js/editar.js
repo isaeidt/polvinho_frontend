@@ -12,7 +12,7 @@ async function loadEditar() {
 			window.history.back();
 		};
 	}
-
+	const BACK_URL = process.env.BACK_URL;
 	if (path !== '/editar-disciplina') {
 		const originalSelect = document.getElementById('disciplinas_input');
 		if (!originalSelect) return;
@@ -33,9 +33,7 @@ async function loadEditar() {
 		originalSelect.parentElement.replaceChild(container, originalSelect);
 
 		try {
-			const response = await fetch(
-				`https://polvinho-api-lj8e.onrender.com/api/all/subject`,
-			);
+			const response = await fetch(`${BACK_URL}/api/all/subject`);
 			if (!response.ok) throw new Error('Falha ao buscar dados');
 
 			const subjects = await response.json();
@@ -138,7 +136,7 @@ async function loadEditar() {
 		const tagsContainer = document.createElement('div');
 		tagsContainer.className = 'selected-tags';
 		tagsContainer.textContent = 'Selecione...';
-
+		const BACK_URL = process.env.BACK_URL;
 		const optionsList = document.createElement('div');
 		optionsList.className = 'options-list';
 		optionsList.style.display = 'none';
@@ -148,9 +146,7 @@ async function loadEditar() {
 		originalSelect.parentElement.replaceChild(container, originalSelect);
 
 		try {
-			const response = await fetch(
-				`https://polvinho-api-lj8e.onrender.com/api/all/professor`,
-			);
+			const response = await fetch(`${BACK_URL}/api/all/professor`);
 			if (!response.ok) throw new Error('Falha ao buscar dados');
 
 			const subjects = await response.json();
@@ -206,7 +202,7 @@ async function loadEditar() {
 				professor: professor,
 			};
 			const response = await fetch(
-				`https://polvinho-api-lj8e.onrender.com/api/update/subject/${idParaEditar}`,
+				`${BACK_URL}/api/update/subject/${idParaEditar}`,
 				{
 					method: 'PATCH',
 					headers: { 'Content-Type': 'application/json' },
@@ -230,7 +226,7 @@ async function loadEditar() {
 				subjects: subjects,
 			};
 			const response = await fetch(
-				`https://polvinho-api-lj8e.onrender.com/api/update/${idParaEditar}`,
+				`${BACK_URL}/api/update/${idParaEditar}`,
 				{
 					method: 'PATCH',
 					headers: { 'Content-Type': 'application/json' },

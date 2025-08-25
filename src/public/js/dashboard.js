@@ -7,7 +7,7 @@ async function loadDashboard() {
 	if (!isDashboardPage || !subjectsContainer) {
 		return;
 	}
-
+	const BACK_URL = process.env.BACK_URL;
 	const loggedInUser = getLoggedInUser();
 	if (!loggedInUser) {
 		console.error(
@@ -22,12 +22,9 @@ async function loadDashboard() {
 	const userRole = loggedInUser.role;
 
 	try {
-		const response = await fetch(
-			`https://polvinho-api-lj8e.onrender.com/api/${userId}`,
-			{
-				cache: 'no-store',
-			},
-		);
+		const response = await fetch(`${BACK_URL}/api/${userId}`, {
+			cache: 'no-store',
+		});
 
 		if (!response.ok) {
 			throw new Error(`Erro na API: ${response.statusText}`);
